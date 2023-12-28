@@ -1,0 +1,19 @@
+.app-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.table-container{
+    flex:1;
+    overflow: auto;
+    position:relative;
+}
+
+app-footer {
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    background-color: white; 
+    padding: 15px;
+  }

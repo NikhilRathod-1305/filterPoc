@@ -1,0 +1,34 @@
+<!-- filter-table.component.html -->
+
+<table class="app-filter-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Projects</th>
+        <th>Type</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngIf="data.length>0;else noData">
+      <tr *ngFor="let item of data">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.phoneNumber }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.projects }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.status }}</td>
+      </tr>
+    </ng-container>
+    <ng-template #noData>
+        <tr>
+            <td colspan="7">No data available</td>
+          </tr>
+    </ng-template>
+    </tbody>
+  </table>
+  

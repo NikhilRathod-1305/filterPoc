@@ -1,0 +1,15 @@
+@import '../../styles.scss';
+
+.header-container{
+    text-align: center;
+    height: 46px;
+    background-color: $primary-color;
+    margin-top: 0;
+    padding: 5px;
+}
+
+.header{
+    margin: 0;
+    font-weight: bolder;
+    color: white;
+}

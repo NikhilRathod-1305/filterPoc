@@ -1,0 +1,199 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "data": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "phoneNumber": "123-456-7890",
+      "email": "john.doe@example.com",
+      "projects": ["Project 1", "Project 2"],
+      "type": "Type 1",
+      "status": "Status 1"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "phoneNumber": "987-654-3210",
+      "email": "jane.smith@example.com",
+      "projects": ["Project 2", "Project 3"],
+      "type": "Type 2",
+      "status": "Status 2"
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "phoneNumber": "555-123-4567",
+      "email": "bob.johnson@example.com",
+      "projects": ["Project 1", "Project 3"],
+      "type": "Type 1",
+      "status": "Status 3"
+    },
+    {
+      "id": 4,
+      "name": "Alice Brown",
+      "phoneNumber": "111-222-3333",
+      "email": "alice.brown@example.com",
+      "projects": ["Project 1"],
+      "type": "Type 3",
+      "status": "Status 1"
+    },
+    {
+      "id": 5,
+      "name": "Eva Wilson",
+      "phoneNumber": "555-555-5555",
+      "email": "eva.wilson@example.com",
+      "projects": ["Project 2", "Project 3"],
+      "type": "Type 2",
+      "status": "Status 1"
+    },
+    {
+      "id": 6,
+      "name": "Chris Brown",
+      "phoneNumber": "333-333-3333",
+      "email": "chris.brown@example.com",
+      "projects": ["Project 1"],
+      "type": "Type 3",
+      "status": "Status 2"
+    },
+    {
+      "id": 7,
+      "name": "Mia Johnson",
+      "phoneNumber": "444-444-4444",
+      "email": "mia.johnson@example.com",
+      "projects": ["Project 3"],
+      "type": "Type 1",
+      "status": "Status 3"
+    },
+    {
+      "id": 8,
+      "name": "Sam Taylor",
+      "phoneNumber": "777-777-7777",
+      "email": "sam.taylor@example.com",
+      "projects": ["Project 2"],
+      "type": "Type 2",
+      "status": "Status 1"
+    },
+    {
+      "id": 9,
+      "name": "Olivia Moore",
+      "phoneNumber": "888-888-8888",
+      "email": "olivia.moore@example.com",
+      "projects": ["Project 1", "Project 3"],
+      "type": "Type 1",
+      "status": "Status 2"
+    },
+    {
+      "id": 10,
+      "name": "David Anderson",
+      "phoneNumber": "999-999-9999",
+      "email": "david.anderson@example.com",
+      "projects": ["Project 2"],
+      "type": "Type 3",
+      "status": "Status 3"
+    },
+    {
+      "id": 11,
+      "name": "Sophie Miller",
+      "phoneNumber": "111-555-5555",
+      "email": "sophie.miller@example.com",
+      "projects": ["Project 1"],
+      "type": "Type 2",
+      "status": "Status 1"
+    },
+    {
+      "id": 12,
+      "name": "Daniel Wilson",
+      "phoneNumber": "222-555-5555",
+      "email": "daniel.wilson@example.com",
+      "projects": ["Project 3"],
+      "type": "Type 1",
+      "status": "Status 2"
+    },
+    {
+      "id": 13,
+      "name": "Emma Davis",
+      "phoneNumber": "333-555-5555",
+      "email": "emma.davis@example.com",
+      "projects": ["Project 1", "Project 2"],
+      "type": "Type 3",
+      "status": "Status 3"
+    },
+    {
+      "id": 14,
+      "name": "Isaac White",
+      "phoneNumber": "444-555-5555",
+      "email": "isaac.white@example.com",
+      "projects": ["Project 2", "Project 3"],
+      "type": "Type 2",
+      "status": "Status 1"
+    },
+    {
+      "id": 15,
+      "name": "Ava Wilson",
+      "phoneNumber": "555-555-5555",
+      "email": "ava.wilson@example.com",
+      "projects": ["Project 1"],
+      "type": "Type 3",
+      "status": "Status 3"
+    },
+    {
+      "id": 16,
+      "name": "Jack Brown",
+      "phoneNumber": "666-666-6666",
+      "email": "jack.brown@example.com",
+      "projects": ["Project 3"],
+      "type": "Type 1",
+      "status": "Status 2"
+    },
+    {
+      "id": 17,
+      "name": "Sophia Johnson",
+      "phoneNumber": "777-777-7777",
+      "email": "sophia.johnson@example.com",
+      "projects": ["Project 2"],
+      "type": "Type 2",
+      "status": "Status 1"
+    },
+    {
+      "id": 18,
+      "name": "Oliver Taylor",
+      "phoneNumber": "888-888-8888",
+      "email": "oliver.taylor@example.com",
+      "projects": ["Project 1", "Project 3"],
+      "type": "Type 1",
+      "status": "Status 2"
+    },
+    {
+      "id": 19,
+      "name": "Lily Moore",
+      "phoneNumber": "999-999-9999",
+      "email": "lily.moore@example.com",
+      "projects": ["Project 2"],
+      "type": "Type 3",
+      "status": "Status 3"
+    },
+    {
+      "id": 20,
+      "name": "Mason Anderson",
+      "phoneNumber": "111-111-1111",
+      "email": "mason.anderson@example.com",
+      "projects": ["Project 1"],
+      "type": "Type 2",
+      "status": "Status 1"
+    }
+  ]
+
+}

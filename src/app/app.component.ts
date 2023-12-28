@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonService } from './common.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'filterPoc';
+  filteredTableData: any[] = [];
+  updateFilteredTableData(filteredData: any[]): void {
+    // Update the filteredTableData property when filters are applied
+    this.filteredTableData = filteredData;
+  }
 }

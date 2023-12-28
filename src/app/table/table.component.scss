@@ -1,0 +1,20 @@
+/* filter-table.component.css */
+
+table.app-filter-table {
+    padding:10px 10px 10px 10px;
+    width: 80%;
+    border-collapse: collapse;
+    max-height: 500px; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
+  
+  table.app-filter-table th, table.app-filter-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  table.app-filter-table th {
+    background-color: #f2f2f2;
+  }
+  

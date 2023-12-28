@@ -1,0 +1,29 @@
+<!-- src/app/filter-component/filter-component.component.html -->
+
+<div>
+    <mat-form-field>
+      <mat-label>Projects</mat-label>
+      <mat-select [(ngModel)]="selectedProjects" (ngModelChange)="applyFilters()" multiple>
+        <mat-option *ngFor="let project of projects" [value]="project">{{ project }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Types</mat-label>
+      <mat-select [(ngModel)]="selectedTypes" (ngModelChange)="applyFilters()" multiple>
+        <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="selectedStatus" (ngModelChange)="applyFilters()" multiple>
+        <mat-option *ngFor="let status of status" [value]="status">{{ status }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <!-- <button mat-button (click)="applyFilters()">Apply Filters</button> -->
+    <button mat-button (click)="downloadCSV()">Download CSV</button>
+    <button mat-button (click)="downloadExcel()">Download Excel</button>
+  </div>
+  
