@@ -128,8 +128,9 @@ export class FilterComponent implements OnInit {
     ) {
       const days = parseInt(this.selectedDateRange.substr(4));
       const currentDate = new Date();
-      const startDate = new Date(currentDate.getTime() - days * 24 * 60 * 60 * 1000);
-
+      const startDate = new Date(
+        currentDate.getTime() - days * 24 * 60 * 60 * 1000
+      );
 
       this.filteredData = this.filteredData.filter(
         (item) => new Date(item.date) >= startDate

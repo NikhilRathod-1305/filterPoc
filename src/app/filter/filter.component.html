@@ -52,24 +52,7 @@
         </ng-container>
       </mat-option>
     </mat-select>
-    <!-- <ng-container *ngIf="selectedDateRange === 'sample'">
-      <mat-date-range-input hidden [formGroup]="range" [rangePicker]="picker" [max]="maxDate">
-      <input matStartDate formControlName="start"(ngModelChange)="applyFilters()">
-      <input matEndDate formControlName="end" (ngModelChange)="applyFilters()">
-      </mat-date-range-input>
-      <mat-datepicker-toggle #datepicker  class="picker" matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </ng-container> -->
-  
-    <!-- this is working container  -->
-    <!-- <ng-container *ngIf="selectedDateRange === 'custom'" (ngModelChange)="applyFilters()">
-      <mat-date-range-input [formGroup]="range" [rangePicker]="picker" [max]="maxDate">
-        <input matStartDate formControlName="start"(ngModelChange)="applyFilters()">
-        <input matEndDate formControlName="end" (ngModelChange)="applyFilters()">
-      </mat-date-range-input>
-      <mat-datepicker-toggle class="picker" matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </ng-container> -->
+   
     
   </mat-form-field>
   </div>
