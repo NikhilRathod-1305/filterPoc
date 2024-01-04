@@ -1,6 +1,6 @@
 <!-- src/app/filter-component/filter-component.component.html -->
 
-<div class="filter" style="display: flex;">
+<div>
     <mat-form-field appearance="outline" >
       <mat-label>Projects</mat-label>
       <mat-select [(ngModel)]="selectedProjects" (ngModelChange)="applyFilters()" multiple>
@@ -23,39 +23,9 @@
     </mat-form-field>
 
 
-    <!-- <mat-form-field appearance="outline">
-        <mat-label>Filter</mat-label>
-        <mat-select [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()">
-          <mat-option *ngFor="let option of filterOptions" [value]="option.value" class="select-custom-date-option">
-              <div class="custom-date-filter" *ngIf="option.value !== 'custom';">
-                {{ option.label }}
-              </div>
-              <div class="custom-date-filter"  *ngIf="option.value === 'custom';" (click)="openDateRangePicker(picker)">
-                {{ option.label }}
-                <mat-date-range-input hidden [formGroup]="range" [rangePicker]="picker" (dateChange)="onDateRangeChange(option)">
-                  <input matStartDate formControlName="start">
-                  <input matEndDate formControlName="end">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matSuffix [for]="picker" (click)="defaultValueHandler()"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-              </div>
-          </mat-option>
-        </mat-select>
-      </mat-form-field> -->
-      
 
 
-    <date-filter
-    [customDateConfig]="{ dateValue: 1, action: handleDateFilter }"
-    (filtersApplied)="handleDateFilter($event)"
-    #dateFilterComponent
-    ></date-filter>
-
-    
-
-
-
-  <!-- <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline">
     <mat-label>Initiated Date Range</mat-label>
     <mat-select [(ngModel)]="selectedDateFilter" (ngModelChange)="applyFilters()">
       <mat-option *ngFor="let dateFilter of dateFilters" [value]="dateFilter.value">
@@ -74,7 +44,7 @@
     <mat-date-range-picker #picker></mat-date-range-picker>
     <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
     <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-  </mat-form-field> -->
+  </mat-form-field>
 
 
 

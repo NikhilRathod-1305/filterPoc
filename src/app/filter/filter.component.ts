@@ -109,46 +109,46 @@ export class FilterComponent implements OnInit {
       this.filteredData = [...this.data]
     }
 
-    // if (this.selectedDateFilter === 'last30' || this.selectedDateFilter === 'last60' || this.selectedDateFilter === 'last90') {
-    //   const days = this.selectedDateFilter === 'last30' ? 30 : this.selectedDateFilter === 'last60' ? 60 : 90;
-    //   const currentDate = new Date();
-    //   const startDate = new Date();
-    //   startDate.setDate(currentDate.getDate() - days);
-
-    //   this.filteredData = this.filteredData.filter((item) => {
-    //     const initiatedDate = new Date(item.initiatedDate);
-    //     return initiatedDate >= startDate && initiatedDate <= currentDate;
-    //   });
-    // }
-    // if (this.selectedDateFilter === 'custom') {
-    //   const startDate = this.range.controls.start.value;
-    //   console.log(startDate);
-
-    //   const endDate = this.range.controls.end.value;
-    //   console.log(endDate);
-
-
-    //   if (startDate && endDate) {
-    //     this.filteredData = this.filteredData.filter(item => {
-    //       const itemDate = new Date(item.initiatedDate);
-    //       console.log(itemDate);
-    //       return itemDate >= startDate && itemDate <= endDate;
-    //     });
-    //   }
-    // }
-    if (this.dateFilterComponent && this.dateFilterComponent.dateSelected) {
-
-      const startDate = this.dateFilterComponent.formattedStartDate;
-      const endDate = this.dateFilterComponent.formattedEndDate;
+    if (this.selectedDateFilter === 'last30' || this.selectedDateFilter === 'last60' || this.selectedDateFilter === 'last90') {
+      const days = this.selectedDateFilter === 'last30' ? 30 : this.selectedDateFilter === 'last60' ? 60 : 90;
+      const currentDate = new Date();
+      const startDate = new Date();
+      startDate.setDate(currentDate.getDate() - days);
 
       this.filteredData = this.filteredData.filter((item) => {
-        const initiatedDate = moment(item.initiatedDate).format('YYYY-MM-DD');
-        return (
-          (!startDate || initiatedDate >= startDate) &&
-          (!endDate || initiatedDate <= endDate)
-        );
+        const initiatedDate = new Date(item.initiatedDate);
+        return initiatedDate >= startDate && initiatedDate <= currentDate;
       });
     }
+    if (this.selectedDateFilter === 'custom') {
+      const startDate = this.range.controls.start.value;
+      console.log(startDate);
+
+      const endDate = this.range.controls.end.value;
+      console.log(endDate);
+
+
+      if (startDate && endDate) {
+        this.filteredData = this.filteredData.filter(item => {
+          const itemDate = new Date(item.initiatedDate);
+          console.log(itemDate);
+          return itemDate >= startDate && itemDate <= endDate;
+        });
+      }
+    }
+    // if (this.dateFilterComponent && this.dateFilterComponent.dateSelected) {
+
+    //   const startDate = this.dateFilterComponent.formattedStartDate;
+    //   const endDate = this.dateFilterComponent.formattedEndDate;
+
+    //   this.filteredData = this.filteredData.filter((item) => {
+    //     const initiatedDate = moment(item.initiatedDate).format('YYYY-MM-DD');
+    //     return (
+    //       (!startDate || initiatedDate >= startDate) &&
+    //       (!endDate || initiatedDate <= endDate)
+    //     );
+    //   });
+    // }
 
     this.filtersApplied.emit(this.filteredData);
     console.log('Filtered Data:', this.filteredData);

@@ -47,7 +47,25 @@
       z-index: 2;
       background-color: $primary-color !important;
       max-height: 10px !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+    .table-header, .table-data {
+      word-wrap: break-word;
+    }
+
+    .table-data {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .table-header-row,
+    .table-data {
+      width: 150px; // Set a fixed width for each column
+    }
+
     .table-header:first-child{
       height: auto;
     border-bottom-left-radius: 8px;
@@ -82,4 +100,10 @@
 
   .mdc-data-table__cell, .mdc-data-table__header-cell {
     padding: 0 8px 0 8px;
+}
+
+.no-data-message{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
