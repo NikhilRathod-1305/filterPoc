@@ -1,0 +1,35 @@
+.custom-date-filter {
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+::ng-deep .mat-date-range-input-separator {
+  display: none;
+}
+
+.custom-outline ::ng-deep .mdc-notched-outline > * {
+  border-color: grey !important;
+}
+.custom-outline ::ng-deep .mdc-text-field--focused .mdc-notched-outline > * {
+  border-color: grey !important;
+}
+#date-filter ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  height: 0 !important;
+}
+input {
+  display: none;
+}
+.date-filter {
+    margin-top: 10px;
+  width: 100%;
+  .date-filter-option {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}

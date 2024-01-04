@@ -1,20 +1,85 @@
-/* filter-table.component.css */
+@import '../../styles.scss';
 
-table.app-filter-table {
-    padding:10px 10px 10px 10px;
-    width: 80%;
-    border-collapse: collapse;
-    max-height: 500px; /* Adjust the height as needed */
-    overflow-y: auto;
+  .table-container {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+    
+    height: 75vh; /* Use 100% of the viewport height */
+    .table{
+      box-shadow: none;
+      // border-radius: 8px;
+      // width: 100%;
+      table-layout: fixed;
+      border-collapse: separate;
+      border-spacing: 0 10px;
+      // background-color: aliceblue;
+    
+  .table-header-row{
+    border-radius: 8px !important;
+    height: 40px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+    }
+    .table-data:first-child {
+      height: auto;
+      border-bottom-left-radius: 8px;
+      border-top-left-radius: 8px;
+      width: -moz-fit-content;
+      width: fit-content;
+  }
+  .table-data:last-child {
+    height: auto;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+    }
+    .table-header{
+      white-space: nowrap;
+      padding: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background-color: $primary-color !important;
+      max-height: 10px !important;
+    }
+    .table-header:first-child{
+      height: auto;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    width: -moz-fit-content;
+    width: fit-content;
+    }
+    .table-header:last-child{
+      height: auto;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    width: -moz-fit-content;
+    width: fit-content;
+    }
+    .table-row {
+      white-space: nowrap;
+      padding: 8px;
+      height: 40px;
+      border-spacing: 0 10px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      height: 40px;
+      border-radius: 8px;
+      // width: fit-content;
+    }
+    
+  
   }
   
-  table.app-filter-table th, table.app-filter-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+  mat-paginator {
+    margin-top: auto; /* Push the paginator to the bottom */
   }
-  
-  table.app-filter-table th {
-    background-color: #f2f2f2;
-  }
-  
+
+  .mdc-data-table__cell, .mdc-data-table__header-cell {
+    padding: 0 8px 0 8px;
+}

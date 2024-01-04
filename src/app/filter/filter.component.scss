@@ -1,3 +1,14 @@
 mat-form-field{
     margin: 10px;
 }
+
+.custom-date-range-option {
+    padding: 8px; /* Add padding for spacing */
+    border-top: 1px solid #ccc; /* Add a border to separate custom option */
+  }
+
+  .custom-date{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

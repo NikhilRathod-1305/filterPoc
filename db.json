@@ -19,181 +19,402 @@
       "name": "John Doe",
       "phoneNumber": "123-456-7890",
       "email": "john.doe@example.com",
-      "projects": ["Project 1", "Project 2"],
-      "type": "Type 1",
-      "status": "Status 1"
+      "projects": ["Project Apollo", "Project Orion"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2023-12-10"
     },
     {
       "id": 2,
       "name": "Jane Smith",
       "phoneNumber": "987-654-3210",
       "email": "jane.smith@example.com",
-      "projects": ["Project 2", "Project 3"],
-      "type": "Type 2",
-      "status": "Status 2"
+      "projects": ["Project Gemini", "Project Titan"],
+      "type": "Infrastructure",
+      "status": "Ongoing",
+      "initiatedDate": "2023-01-02"
     },
     {
       "id": 3,
       "name": "Bob Johnson",
       "phoneNumber": "555-123-4567",
       "email": "bob.johnson@example.com",
-      "projects": ["Project 1", "Project 3"],
-      "type": "Type 1",
-      "status": "Status 3"
+      "projects": ["Project Artemis", "Project Atlas"],
+      "type": "Research",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-01-03"
     },
     {
       "id": 4,
       "name": "Alice Brown",
       "phoneNumber": "111-222-3333",
       "email": "alice.brown@example.com",
-      "projects": ["Project 1"],
-      "type": "Type 3",
-      "status": "Status 1"
+      "projects": ["Project Apollo"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2023-01-04"
     },
     {
       "id": 5,
       "name": "Eva Wilson",
       "phoneNumber": "555-555-5555",
       "email": "eva.wilson@example.com",
-      "projects": ["Project 2", "Project 3"],
-      "type": "Type 2",
-      "status": "Status 1"
+      "projects": ["Project Gemini", "Project Titan"],
+      "type": "Infrastructure",
+      "status": "Completed",
+      "initiatedDate": "2023-01-05"
     },
     {
       "id": 6,
       "name": "Chris Brown",
       "phoneNumber": "333-333-3333",
       "email": "chris.brown@example.com",
-      "projects": ["Project 1"],
-      "type": "Type 3",
-      "status": "Status 2"
+      "projects": ["Project Artemis"],
+      "type": "Research",
+      "status": "Ongoing",
+      "initiatedDate": "2023-01-06"
     },
     {
       "id": 7,
       "name": "Mia Johnson",
       "phoneNumber": "444-444-4444",
       "email": "mia.johnson@example.com",
-      "projects": ["Project 3"],
-      "type": "Type 1",
-      "status": "Status 3"
+      "projects": ["Project Atlas"],
+      "type": "Research",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-01-07"
     },
     {
       "id": 8,
       "name": "Sam Taylor",
       "phoneNumber": "777-777-7777",
       "email": "sam.taylor@example.com",
-      "projects": ["Project 2"],
-      "type": "Type 2",
-      "status": "Status 1"
+      "projects": ["Project Titan"],
+      "type": "Infrastructure",
+      "status": "Completed",
+      "initiatedDate": "2023-01-08"
     },
     {
       "id": 9,
       "name": "Olivia Moore",
       "phoneNumber": "888-888-8888",
       "email": "olivia.moore@example.com",
-      "projects": ["Project 1", "Project 3"],
-      "type": "Type 1",
-      "status": "Status 2"
+      "projects": ["Project Apollo", "Project Atlas"],
+      "type": "Software Development",
+      "status": "Ongoing",
+      "initiatedDate": "2023-01-09"
     },
     {
       "id": 10,
       "name": "David Anderson",
       "phoneNumber": "999-999-9999",
       "email": "david.anderson@example.com",
-      "projects": ["Project 2"],
-      "type": "Type 3",
-      "status": "Status 3"
+      "projects": ["Project Gemini"],
+      "type": "Infrastructure",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-01-10"
     },
     {
       "id": 11,
       "name": "Sophie Miller",
       "phoneNumber": "111-555-5555",
       "email": "sophie.miller@example.com",
-      "projects": ["Project 1"],
-      "type": "Type 2",
-      "status": "Status 1"
+      "projects": ["Project Apollo"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2023-01-11"
     },
     {
       "id": 12,
       "name": "Daniel Wilson",
       "phoneNumber": "222-555-5555",
       "email": "daniel.wilson@example.com",
-      "projects": ["Project 3"],
-      "type": "Type 1",
-      "status": "Status 2"
-    },
+      "projects": ["Project Atlas"],
+      "type": "Research",
+      "status": "Ongoing",
+      "initiatedDate": "2023-01-12"
+   
+
+ },
     {
       "id": 13,
       "name": "Emma Davis",
       "phoneNumber": "333-555-5555",
       "email": "emma.davis@example.com",
-      "projects": ["Project 1", "Project 2"],
-      "type": "Type 3",
-      "status": "Status 3"
+      "projects": ["Project Apollo", "Project Gemini"],
+      "type": "Infrastructure",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-01-13"
     },
     {
       "id": 14,
       "name": "Isaac White",
       "phoneNumber": "444-555-5555",
       "email": "isaac.white@example.com",
-      "projects": ["Project 2", "Project 3"],
-      "type": "Type 2",
-      "status": "Status 1"
+      "projects": ["Project Titan", "Project Atlas"],
+      "type": "Research",
+      "status": "Completed",
+      "initiatedDate": "2023-01-14"
     },
     {
       "id": 15,
       "name": "Ava Wilson",
       "phoneNumber": "555-555-5555",
       "email": "ava.wilson@example.com",
-      "projects": ["Project 1"],
-      "type": "Type 3",
-      "status": "Status 3"
+      "projects": ["Project Apollo"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2023-01-15"
     },
     {
       "id": 16,
       "name": "Jack Brown",
       "phoneNumber": "666-666-6666",
       "email": "jack.brown@example.com",
-      "projects": ["Project 3"],
-      "type": "Type 1",
-      "status": "Status 2"
+      "projects": ["Project Atlas"],
+      "type": "Research",
+      "status": "Ongoing",
+      "initiatedDate": "2023-01-16"
     },
     {
       "id": 17,
       "name": "Sophia Johnson",
       "phoneNumber": "777-777-7777",
       "email": "sophia.johnson@example.com",
-      "projects": ["Project 2"],
-      "type": "Type 2",
-      "status": "Status 1"
+      "projects": ["Project Titan"],
+      "type": "Infrastructure",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-01-17"
     },
     {
       "id": 18,
       "name": "Oliver Taylor",
       "phoneNumber": "888-888-8888",
       "email": "oliver.taylor@example.com",
-      "projects": ["Project 1", "Project 3"],
-      "type": "Type 1",
-      "status": "Status 2"
+      "projects": ["Project Apollo", "Project Gemini"],
+      "type": "Infrastructure",
+      "status": "Ongoing",
+      "initiatedDate": "2023-01-18"
     },
     {
       "id": 19,
       "name": "Lily Moore",
       "phoneNumber": "999-999-9999",
       "email": "lily.moore@example.com",
-      "projects": ["Project 2"],
-      "type": "Type 3",
-      "status": "Status 3"
+      "projects": ["Project Titan"],
+      "type": "Infrastructure",
+      "status": "Completed",
+      "initiatedDate": "2023-01-19"
     },
     {
       "id": 20,
       "name": "Mason Anderson",
       "phoneNumber": "111-111-1111",
       "email": "mason.anderson@example.com",
-      "projects": ["Project 1"],
-      "type": "Type 2",
-      "status": "Status 1"
+      "projects": ["Project Apollo"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2023-01-20"
+    },
+    {
+      "id": 21,
+      "name": "Lucas Baker",
+      "phoneNumber": "111-222-3333",
+      "email": "lucas.baker@example.com",
+      "projects": ["Project Apollo"],
+      "type": "Software Development",
+      "status": "Ongoing",
+      "initiatedDate": "2023-04-05"
+    },
+    {
+      "id": 22,
+      "name": "Emily White",
+      "phoneNumber": "222-333-4444",
+      "email": "emily.white@example.com",
+      "projects": ["Project Gemini", "Project Titan"],
+      "type": "Infrastructure",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-05-10"
+    },
+    {
+      "id": 23,
+      "name": "Daniel Moore",
+      "phoneNumber": "333-444-5555",
+      "email": "daniel.moore@example.com",
+      "projects": ["Project Apollo", "Project Gemini"],
+      "type": "Infrastructure",
+      "status": "Ongoing",
+      "initiatedDate": "2023-06-15"
+    },
+    {
+      "id": 24,
+      "name": "Ella Anderson",
+      "phoneNumber": "444-555-6666",
+      "email": "ella.anderson@example.com",
+      "projects": ["Project Titan"],
+      "type": "Infrastructure",
+      "status": "Completed",
+      "initiatedDate": "2023-07-20"
+    },
+    {
+      "id": 25,
+      "name": "Henry Taylor",
+      "phoneNumber": "555-666-7777",
+      "email": "henry.taylor@example.com",
+      "projects": ["Project Gemini"],
+      "type": "Infrastructure",
+      "status": "Ongoing",
+      "initiatedDate": "2023-08-25"
+    },
+    {
+      "id": 26,
+      "name": "Zoe Miller",
+      "phoneNumber": "666-777-8888",
+      "email": "zoe.miller@example.com",
+      "projects": ["Project Apollo", "Project Titan"],
+      "type": "Infrastructure",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-09-30"
+    },
+    {
+      "id": 27,
+      "name": "Caleb Brown",
+      "phoneNumber": "777-888-9999",
+      "email": "caleb.brown@example.com",
+      "projects": ["Project Voyager"],
+      "type": "Data Analysis",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-10-05"
+    },
+    {
+      "id": 28,
+      "name": "Nora Wilson",
+      "phoneNumber": "888-999-0000",
+      "email": "nora.wilson@example.com",
+      "projects": ["Project Nebula"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2023-11-10"
+    },
+    {
+      "id": 29,
+      "name": "Oscar Johnson",
+      "phoneNumber": "999-000-1111",
+      "email": "oscar.johnson@example.com",
+      "projects": ["Project Galaxy"],
+      "type": "Infrastructure",
+      "status": "Ongoing",
+      "initiatedDate": "2023-12-15"
+    },
+    {
+      "id": 30,
+      "name": "Luna Taylor",
+      "phoneNumber": "111-222-3333",
+      "email": "luna.taylor@example.com",
+      "projects": ["Project Orion", "Project Titan"],
+      "type": "Research",
+      "status": "Completed",
+      "initiatedDate": "2024-01-20"
+    },
+    {
+      "id": 31,
+      "name": "Elijah Davis",
+      "phoneNumber": "222-333-4444",
+      "email": "elijah.davis@example.com",
+      "projects": ["Project Artemis", "Project Atlas"],
+      "type": "Data Analysis",
+      "status": "Yet to Start",
+      "initiatedDate": "2024-02-25"
+    },
+    {
+      "id": 32,
+      "name": "Aria Brown",
+      "phoneNumber": "333-444-5555",
+      "email": "aria.brown@example.com",
+      "projects": ["Project Voyager"],
+      "type": "Software Development",
+      "status": "Ongoing",
+      "initiatedDate": "2024-03-05"
+    },
+    {
+      "id": 33,
+      "name": "Gabriel Wilson",
+      "phoneNumber": "444-555-6666",
+      "email": "gabriel.wilson@example.com",
+      "projects": ["Project Nebula"],
+      "type": "Infrastructure",
+      "status": "Completed",
+      "initiatedDate": "2024-04-10"
+    },
+    {
+      "id": 34,
+      "name": "Hazel Taylor",
+      "phoneNumber": "555-666-7777",
+      "email": "hazel.taylor@example.com",
+      "projects": ["Project Galaxy", "Project Orion"],
+      "type": "Research",
+      "status": "Yet to Start",
+      "initiatedDate": "2024-05-15"
+    },
+    {
+      "id": 35,
+      "name": "Leo Moore",
+      "phoneNumber": "666-777-8888",
+      "email": "leo.moore@example.com",
+      "projects": ["Project Titan"],
+      "type": "Data Analysis",
+      "status": "Ongoing",
+      "initiatedDate": "2024-06-20"
+    },
+    {
+      "id": 36,
+      "name": "Stella Anderson",
+      "phoneNumber": "777-888-9999",
+      "email": "stella.anderson@example.com",
+      "projects": ["Project Artemis"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2024-07-25"
+    },
+    {
+      "id": 37,
+      "name": "Logan Johnson",
+      "phoneNumber": "888-999-0000",
+      "email": "logan.johnson@example.com",
+      "projects": ["Project Atlas"],
+      "type": "Infrastructure",
+      "status": "Yet to Start",
+      "initiatedDate": "2024-08-30"
+    },
+    {
+      "id": 38,
+      "name": "Mila Taylor",
+      "phoneNumber": "999-000-1111",
+      "email": "mila.taylor@example.com",
+      "projects": ["Project Nebula", "Project Galaxy"],
+      "type": "Research",
+      "status": "Ongoing",
+      "initiatedDate": "2024-09-05"
+    },
+    {
+      "id": 39,
+      "name": "Asher Wilson",
+      "phoneNumber": "111-222-3333",
+      "email": "asher.wilson@example.com",
+      "projects": ["Project Orion"],
+      "type": "Data Analysis",
+      "status": "Completed",
+      "initiatedDate": "2024-10-10"
+    },
+    {
+      "id": 40,
+      "name": "Avery Johnson",
+      "phoneNumber": "222-333-4444",
+      "email": "avery.johnson@example.com",
+      "projects": ["Project Titan"],
+      "type": "Software Development",
+      "status": "Yet to Start",
+      "initiatedDate": "2024-11-15"
     }
   ]
-
 }

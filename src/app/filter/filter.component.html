@@ -1,29 +1,95 @@
 <!-- src/app/filter-component/filter-component.component.html -->
 
-<div>
-    <mat-form-field>
+<div class="filter" style="display: flex;">
+    <mat-form-field appearance="outline" >
       <mat-label>Projects</mat-label>
       <mat-select [(ngModel)]="selectedProjects" (ngModelChange)="applyFilters()" multiple>
         <mat-option *ngFor="let project of projects" [value]="project">{{ project }}</mat-option>
       </mat-select>
     </mat-form-field>
   
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Types</mat-label>
-      <mat-select [(ngModel)]="selectedTypes" (ngModelChange)="applyFilters()" multiple>
+      <mat-select [(ngModel)]="selectedTypes" (ngModelChange)="applyFilters()" multiple disableRipple>
         <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
       </mat-select>
     </mat-form-field>
   
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Status</mat-label>
-      <mat-select [(ngModel)]="selectedStatus" (ngModelChange)="applyFilters()" multiple>
+      <mat-select [(ngModel)]="selectedStatus" (ngModelChange)="applyFilters()">
         <mat-option *ngFor="let status of status" [value]="status">{{ status }}</mat-option>
       </mat-select>
     </mat-form-field>
-  
+
+
+    <!-- <mat-form-field appearance="outline">
+        <mat-label>Filter</mat-label>
+        <mat-select [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()">
+          <mat-option *ngFor="let option of filterOptions" [value]="option.value" class="select-custom-date-option">
+              <div class="custom-date-filter" *ngIf="option.value !== 'custom';">
+                {{ option.label }}
+              </div>
+              <div class="custom-date-filter"  *ngIf="option.value === 'custom';" (click)="openDateRangePicker(picker)">
+                {{ option.label }}
+                <mat-date-range-input hidden [formGroup]="range" [rangePicker]="picker" (dateChange)="onDateRangeChange(option)">
+                  <input matStartDate formControlName="start">
+                  <input matEndDate formControlName="end">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker" (click)="defaultValueHandler()"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+      
+
+
+    <qid-date-filter
+    [customDateConfig]="{ dateValue: 1, action: handleDateFilter }"
+    (filtersApplied)="applyFilters()"
+    (optionSelected)="handleDateFilter($event)"
+    #dateFilterComponent
+    ></qid-date-filter>
+
+    
+
+
+
+  <!-- <mat-form-field appearance="outline">
+    <mat-label>Initiated Date Range</mat-label>
+    <mat-select [(ngModel)]="selectedDateFilter" (ngModelChange)="applyFilters()">
+      <mat-option *ngFor="let dateFilter of dateFilters" [value]="dateFilter.value">
+        <div *ngIf="dateFilter.value!=='custom'"></div>
+        {{ dateFilter.label }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selectedDateFilter==='custom'" appearance="outline">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
+      <input matStartDate formControlName="start" placeholder="Start date" (ngModelChange)="applyFilters()">
+      <input matEndDate formControlName="end" placeholder="End date" (ngModelChange)="applyFilters()">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+  </mat-form-field> -->
+
+
+
     <!-- <button mat-button (click)="applyFilters()">Apply Filters</button> -->
-    <button mat-button (click)="downloadCSV()">Download CSV</button>
-    <button mat-button (click)="downloadExcel()">Download Excel</button>
+    <button mat-icon-button (click)="resetFilters()" [disabled]="!areFiltersSelected()"> 
+    <mat-icon>replay</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="exportMenu" class="export-button">
+        <mat-icon>save_alt</mat-icon>
+    </button>
+    <mat-menu #exportMenu="matMenu">
+      <button mat-menu-item (click)="downloadCSV()" >Download CSV</button>
+      <button mat-menu-item (click)="downloadExcel()">Download Excel</button>
+    </mat-menu>
+    
+    <!-- <button mat-raised-button color="warn" (click)="resetFilters()" [disabled]="!areFiltersSelected()">Reset</button> -->
   </div>
   

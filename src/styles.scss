@@ -39,3 +39,20 @@ $primary-color :#225E9E;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.dense-1 {
+    @include mat.all-component-densities(-1);
+  }
+  
+  .dense-2 {
+    @include mat.all-component-densities(-2);
+  }
+
+//   .mat-mdc-text-field-wrapper {
+//     height: 35px !important; 
+//     flex: auto;
+//     display: flex;
+//     justify-content: center;
+//     text-align: center;
+// }
+
