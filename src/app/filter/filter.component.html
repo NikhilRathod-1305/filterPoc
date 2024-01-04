@@ -29,8 +29,20 @@
     <mat-label>Initiated Date Range</mat-label>
     <mat-select [(ngModel)]="selectedDateFilter" (ngModelChange)="applyFilters()">
       <mat-option *ngFor="let dateFilter of dateFilters" [value]="dateFilter.value">
-        <div *ngIf="dateFilter.value!=='custom'"></div>
-        {{ dateFilter.label }}</mat-option>
+        {{ dateFilter.label }}
+    </mat-option>
+    <mat-option (click)="openCustomDateRange(picker)" (ngModelChange)="applyFilters()">
+        {{dateFilters[4].label}}
+        <ng-container>
+            <mat-date-range-input hidden [formGroup]="range" [rangePicker]="picker" (ngModelChange)="applyFilters()">
+                <input matStartDate formControlName="start" placeholder="Start date" (ngModelChange)="applyFilters()">
+                <input matEndDate formControlName="end" placeholder="End date" (ngModelChange)="applyFilters()">
+              </mat-date-range-input>
+              <mat-datepicker-toggle hidden class="picker" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+           
+        </ng-container>
+    </mat-option>
     </mat-select>
   </mat-form-field>
 
