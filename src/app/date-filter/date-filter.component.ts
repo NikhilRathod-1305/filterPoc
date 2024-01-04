@@ -9,7 +9,7 @@ interface filterOption {
   viewValue: string;
 }
 @Component({
-  selector: "qid-date-filter",
+  selector: "date-filter",
   templateUrl: "./date-filter.component.html",
   styleUrls: ["./date-filter.component.scss"],
 })
@@ -109,6 +109,7 @@ export class DateFilterComponent {
     this.defaultOptionViewValue = this.filterOption[event.value - 1]?.viewValue;
     let startDate: Date | null = null;
     const endDate = new Date();
+
     if (event.value === 1) {
       startDate = new Date(endDate);
       startDate.setDate(endDate.getDate() - 30);
@@ -117,8 +118,11 @@ export class DateFilterComponent {
       startDate.setDate(endDate.getDate() - 60);
     } else if (event.value === 3) {
       startDate = new Date(endDate);
-      startDate.setDate(endDate.getDate() - 90); // Subtract 90 days
+      startDate.setDate(endDate.getDate() - 90);
     }
+
+    console.log('Start Date:', startDate);
+    console.log('End Date:', endDate);
 
     const formattedStartDate = startDate ? startDate.toISOString().split("T")[0] : null;
     const formattedEndDate = endDate.toISOString().split("T")[0];
@@ -126,13 +130,15 @@ export class DateFilterComponent {
       selectedValue: event.value,
       startDate: formattedStartDate,
       endDate: formattedEndDate
-    }
+    };
 
-    if (typeof (formattedStartDate) != null && typeof (formattedEndDate) != null) {
+    if (typeof formattedStartDate !== null && typeof formattedEndDate !== null) {
       this.optionSelected.emit(selectedDateData);
-      console.log(selectedDateData);
-
+      console.log("emitting selectedDate", selectedDateData);
       this.customDateConfig?.action(selectedDateData);
+      // this.optionSelected.emit({ startDate: formattedStartDate, endDate: formattedEndDate });
     }
   }
+
+
 }

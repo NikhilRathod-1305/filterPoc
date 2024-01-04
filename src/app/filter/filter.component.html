@@ -45,12 +45,11 @@
       
 
 
-    <qid-date-filter
+    <date-filter
     [customDateConfig]="{ dateValue: 1, action: handleDateFilter }"
-    (filtersApplied)="applyFilters()"
-    (optionSelected)="handleDateFilter($event)"
+    (filtersApplied)="handleDateFilter($event)"
     #dateFilterComponent
-    ></qid-date-filter>
+    ></date-filter>
 
     
 
