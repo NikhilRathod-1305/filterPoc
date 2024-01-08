@@ -52,7 +52,7 @@ export class FilterComponent implements OnInit, OnChanges {
     this.service.getData().subscribe(data => {
       this.data = data;
       this.extractFilterOptions();
-      this.selectedStatus = [...this.status];
+      this.selectedStatus = ['Ongoing'];
       this.selectedDateFilter = "last30";
       this.applyFilters();
       this.updateStatusOptionsCount();
@@ -156,9 +156,9 @@ export class FilterComponent implements OnInit, OnChanges {
   }
 
   statusOptions: { status: string, count: number }[] = [
-    { status: 'Completed', count: 0 },
-    { status: 'Yet to Start', count: 0 },
     { status: 'Ongoing', count: 0 },
+    { status: 'Yet to Start', count: 0 },
+    { status: 'Completed', count: 0 },
   ];
 
   isSelectedStatus(statusOption: string): boolean {
