@@ -24,7 +24,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DateFilterComponent } from './date-filter/date-filter.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -33,8 +34,7 @@ import { DateFilterComponent } from './date-filter/date-filter.component';
     TableComponent,
     FilterComponent,
     HeaderComponent,
-    FooterComponent,
-    DateFilterComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +56,9 @@ import { DateFilterComponent } from './date-filter/date-filter.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

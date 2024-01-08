@@ -36,9 +36,10 @@ $filterPoc-theme: mat.define-light-theme((
 body { margin: 0;overflow-x: hidden;}
 
 $primary-color :#225E9E;
+$default-font: "Heebo-Regular", sans-serif;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: $default-font; font-size: 14px;}
 
 .dense-1 {
     @include mat.all-component-densities(-1);
@@ -56,3 +57,53 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //     text-align: center;
 // }
 
+.mat-mdc-option .mdc-list-item__primary-text{
+    display: flex !important;
+    text-wrap: nowrap !important;
+    align-items: center !important;
+  }
+
+.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c1205077789-6.mdc-text-field--outlined{
+    padding-right: 16px;
+}
+.mat-sort-header-arrow{
+  color: white !important;
+}
+.mat-mdc-form-field-subscript-wrapper{
+  display: none;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined.mdc-text-field--no-label{
+  width: 212px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 16px;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c1205077789-9.mdc-text-field--outlined.mdc-text-field--no-label{
+  width: 85%;
+  height: 40px;
+}
+
+.mat-mdc-option{
+  min-height: 40px;
+}
+
+.mat-mdc-option.mdc-list-item.mdc-list-item{
+min-height: 40px;
+}
+
+.mdc-evolution-chip__text-label.mat-mdc-chip-action-label{
+  display: flex !important;
+  // text-align: center;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+}
+mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color.ng-star-inserted{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

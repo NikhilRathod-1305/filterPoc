@@ -1,14 +1,104 @@
-mat-form-field{
-    margin: 10px;
+@import '../../styles.scss';
+
+.filters-container{
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  font-family: $default-font;
+
+  .filters{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 0;
+    gap: 8px;
+    mat-label{
+      margin-left: 15px;
+    }
+  }
+
+  .clear-button{
+    margin: 30px 0 0 0 ;
+    color: $primary-color;
+    font-family: $default-font;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+  }
 }
 
-.custom-date-range-option {
-    padding: 8px; /* Add padding for spacing */
-    border-top: 1px solid #ccc; /* Add a border to separate custom option */
-  }
+
+mat-form-field{
+    margin: 0 10px 0 10px;
+}
+
+
 
   .custom-date{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    // gap: 59px;
   }
+
+.date-range{
+    width: 150px;
+}
+  .mat-date-range-input{
+    // width: 59px;
+    display: none;
+  }
+.export-button{
+  color: $primary-color;
+}
+
+.filter-second-row{
+  margin: 14px 0px 0px 60px;
+  width: 90%;
+  display: flex;
+  // justify-content: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Add this to your styles.scss or component's style file */
+.completed-chip {
+  background-color: #fff7e0 !important;
+mat-icon{
+  color: #ffbd31 !important;
+}}
+mat-chip{
+  width: 68px;
+  height: 30px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.0784313725);
+}
+
+.count{
+  font-weight: 600;
+}
+mat-icon{
+  span{
+  font-size: 19px !important;
+  }
+}
+
+.yet-to-start-chip {
+  background-color: #cce7ff !important;
+  color: #000; /* Adjust text color accordingly */
+  mat-icon{
+    color: #225E9E;
+  }
+}
+
+.ongoing-chip {
+  background-color: #d9fff6 !important;
+  color: #000; /* Adjust text color accordingly */
+mat-icon{
+  color: #17C69C;
+}
+}
+
+.custom-tooltip{
+  background-color: #225E9E !important;
+  color: #d9fff6 !important;
+}

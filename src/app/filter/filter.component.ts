@@ -1,17 +1,19 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { CommonService } from '../common.service';
 import { AngularCsv } from 'angular-csv-ext/dist/Angular-csv';
 import * as XLSX from 'xlsx';
 import { MatDateRangePicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { FormControl, FormGroup } from '@angular/forms';
-import { DateFilterComponent } from '../date-filter/date-filter.component';
 import * as moment from 'moment';
+import { MatSelect } from '@angular/material/select';
+import { MatChip } from '@angular/material/chips';
+
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnInit, OnChanges {
   data: any[] = [];
   projects: string[] = [];
   types: string[] = [];
@@ -22,19 +24,17 @@ export class FilterComponent implements OnInit {
   selectedStatus: string[] = [];
   filteredData: any[] = [];
   @ViewChild('picker') picker!: MatDateRangePicker<Date>;
-  @ViewChild(DateFilterComponent) dateFilterComponent!: DateFilterComponent;
+  @Output() filtersApplied: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @ViewChild('dateSelect') dateSelect!: MatSelect;
+
+  constructor(private service: CommonService) {
+    this.handleDateFilter = this.handleDateFilter.bind(this);
+  }
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
-
-
-  openDateRangePicker(): void {
-    if (this.picker) {
-      this.picker.open();
-    }
-  }
 
   dateFilters = [
     { label: 'Last 30 Days', value: 'last30' },
@@ -46,21 +46,21 @@ export class FilterComponent implements OnInit {
   selectedDateFilter: string = 'last30';
   dateRange: { start: Date | null, end: Date | null } = { start: null, end: null };
 
-  @Output() filtersApplied: EventEmitter<any[]> = new EventEmitter<any[]>();
 
-  constructor(private service: CommonService) {
-    this.handleDateFilter = this.handleDateFilter.bind(this);
-  }
 
   ngOnInit(): void {
     this.service.getData().subscribe(data => {
       this.data = data;
       this.extractFilterOptions();
+      this.selectedStatus = [...this.status];
       this.selectedDateFilter = "last30";
       this.applyFilters();
+      this.updateStatusOptionsCount();
       this.filtersApplied.emit(this.filteredData);
     });
-    console.log(this.filteredData);
+  }
+  ngOnChanges(): void {
+    this.updateStatusOptionsCount();
   }
 
   private extractFilterOptions(): void {
@@ -80,6 +80,7 @@ export class FilterComponent implements OnInit {
     });
     return Array.from(uniqueValues);
   }
+
 
   applyFilters(): void {
     this.filteredData = [];
@@ -119,6 +120,7 @@ export class FilterComponent implements OnInit {
         const initiatedDate = new Date(item.initiatedDate);
         return initiatedDate >= startDate && initiatedDate <= currentDate;
       });
+
     }
     if (this.selectedDateFilter === 'custom') {
       const startDate = this.range.controls.start.value;
@@ -136,25 +138,42 @@ export class FilterComponent implements OnInit {
         });
       }
     }
-    // if (this.dateFilterComponent && this.dateFilterComponent.dateSelected) {
-
-    //   const startDate = this.dateFilterComponent.formattedStartDate;
-    //   const endDate = this.dateFilterComponent.formattedEndDate;
-
-    //   this.filteredData = this.filteredData.filter((item) => {
-    //     const initiatedDate = moment(item.initiatedDate).format('YYYY-MM-DD');
-    //     return (
-    //       (!startDate || initiatedDate >= startDate) &&
-    //       (!endDate || initiatedDate <= endDate)
-    //     );
-    //   });
-    // }
-
+    // this.updateStatusOptionsCount();
     this.filtersApplied.emit(this.filteredData);
-    console.log('Filtered Data:', this.filteredData);
   }
 
+  openDateRangePicker(picker: any): void {
+    this.selectedDateFilter = 'custom'; // Set the selected value to 'custom'
+    if (picker) {
+      picker.open()
+    }
+  }
 
+  private updateStatusOptionsCount(): void {
+    this.statusOptions.forEach(option => {
+      option.count = this.data.filter(item => item.status === option.status).length;
+    });
+  }
+
+  statusOptions: { status: string, count: number }[] = [
+    { status: 'Completed', count: 0 },
+    { status: 'Yet to Start', count: 0 },
+    { status: 'Ongoing', count: 0 },
+  ];
+
+  isSelectedStatus(statusOption: string): boolean {
+    return this.selectedStatus.includes(statusOption);
+  }
+
+  toggleStatus(statusOption: string): void {
+    const index = this.selectedStatus.indexOf(statusOption);
+    if (index !== -1) {
+      this.selectedStatus.splice(index, 1);
+    } else {
+      this.selectedStatus.push(statusOption);
+    }
+    this.applyFilters();
+  }
 
   handleDateFilter(selectedDateData: any): void {
     // Handle date filter logic if needed
@@ -170,9 +189,11 @@ export class FilterComponent implements OnInit {
   resetFilters(): void {
     this.selectedProjects = [];
     this.selectedTypes = [];
-    this.selectedStatus = [];
+    // this.selectedStatus = [];
     this.selectedDateFilter = 'last30';
     this.dateRange = { start: null, end: null };
+    this.range.controls['start'].setValue(null);
+    this.range.controls['end'].setValue(null);
     this.applyFilters();
   }
 
@@ -203,13 +224,22 @@ export class FilterComponent implements OnInit {
     } else {
       const formattedData = this.filteredData.map(item => {
         const formattedItem = { ...item };
-        formattedItem.projects = item.projects.join(', ');
+
+        // Check if projects is an array before calling join
+        if (Array.isArray(item.projects)) {
+          formattedItem.projects = item.projects.join(', ');
+        } else {
+          formattedItem.projects = item.projects.toString(); // Convert to string if not an array
+        }
+
         return formattedItem;
       });
+
       const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([...formattedData]);
       const wb: XLSX.WorkBook = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
       XLSX.writeFile(wb, 'filtered_projects.xlsx');
     }
   }
+
 }

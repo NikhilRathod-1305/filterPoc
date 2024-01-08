@@ -1,68 +1,88 @@
 <!-- src/app/filter-component/filter-component.component.html -->
 
-<div>
+<div class="filters-container">
+  <div class="filters">
+    <mat-label>
+      Projects
+    </mat-label>
     <mat-form-field appearance="outline" >
-      <mat-label>Projects</mat-label>
-      <mat-select [(ngModel)]="selectedProjects" (ngModelChange)="applyFilters()" multiple>
+      <mat-select [(ngModel)]="selectedProjects" (ngModelChange)="applyFilters()" multiple
+      placeholder="Select Projects">
         <mat-option *ngFor="let project of projects" [value]="project">{{ project }}</mat-option>
       </mat-select>
     </mat-form-field>
-  
+  </div>
+
+  <div class="filters">
+    <mat-label>
+      Category
+    </mat-label>
     <mat-form-field appearance="outline">
-      <mat-label>Types</mat-label>
-      <mat-select [(ngModel)]="selectedTypes" (ngModelChange)="applyFilters()" multiple disableRipple>
+      <mat-select [(ngModel)]="selectedTypes" (ngModelChange)="applyFilters()" multiple
+      placeholder="Select Category">
         <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
       </mat-select>
     </mat-form-field>
-  
-    <mat-form-field appearance="outline">
-      <mat-label>Status</mat-label>
-      <mat-select [(ngModel)]="selectedStatus" (ngModelChange)="applyFilters()">
-        <mat-option *ngFor="let status of status" [value]="status">{{ status }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+  </div>
 
-
-
-
-  <mat-form-field appearance="outline">
-    <mat-label>Initiated Date Range</mat-label>
-    <mat-select [(ngModel)]="selectedDateFilter" (ngModelChange)="applyFilters()">
-      <mat-option *ngFor="let dateFilter of dateFilters" [value]="dateFilter.value">
-        {{ dateFilter.label }}
+  <div class="filters">
+    <mat-label>
+      Period
+    </mat-label>
+  <mat-form-field appearance="outline" class="date-filter">
+    <mat-select #dateSelect [(ngModel)]="selectedDateFilter" (ngModelChange)="applyFilters()"
+    placeholder="Select Initiated Date">
+      <mat-option *ngFor="let dateFilter of dateFilters.slice(0, 3)" [value]="dateFilter.value">
+            {{ dateFilter.label }}
     </mat-option>
-    <mat-option (click)="openCustomDateRange(picker)" (ngModelChange)="applyFilters()">
-        {{dateFilters[4].label}}
-        <ng-container>
-            <mat-date-range-input hidden [formGroup]="range" [rangePicker]="picker" (ngModelChange)="applyFilters()">
-                <input matStartDate formControlName="start" placeholder="Start date" (ngModelChange)="applyFilters()">
-                <input matEndDate formControlName="end" placeholder="End date" (ngModelChange)="applyFilters()">
+    <mat-option (click)="openDateRangePicker(picker);"  (ngModelChange)="applyFilters()" [value]="dateFilters[3].value">
+        <p class="date-range">Custom Date Range </p>
+            <mat-date-range-input class="mat-date-range-input" hidden [formGroup]="range" [rangePicker]="picker" (ngModelChange)="applyFilters()">
+                <input hidden matStartDate formControlName="start" (ngModelChange)="applyFilters()">
+                <input hidden matEndDate formControlName="end" (ngModelChange)="applyFilters()">
               </mat-date-range-input>
-              <mat-datepicker-toggle hidden class="picker" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker-toggle (click)="openDateRangePicker(picker);dateSelect.close()" class="picker" matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
-           
-        </ng-container>
     </mat-option>
     </mat-select>
   </mat-form-field>
-
-  <mat-form-field *ngIf="selectedDateFilter==='custom'" appearance="outline">
-    <mat-label>Enter a date range</mat-label>
-    <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
-      <input matStartDate formControlName="start" placeholder="Start date" (ngModelChange)="applyFilters()">
-      <input matEndDate formControlName="end" placeholder="End date" (ngModelChange)="applyFilters()">
-    </mat-date-range-input>
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-date-range-picker #picker></mat-date-range-picker>
-    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-  </mat-form-field>
+</div>
+  <h1 (click)="resetFilters()" class="clear-button"> 
+    Clear All
+  </h1>
+</div>
 
 
-
-    <!-- <button mat-button (click)="applyFilters()">Apply Filters</button> -->
-    <button mat-icon-button (click)="resetFilters()" [disabled]="!areFiltersSelected()"> 
-    <mat-icon>replay</mat-icon></button>
+<div class="filter-second-row">
+  <div class="chip-list">
+<mat-chip-listbox>
+  <mat-chip *ngFor="let statusOption of statusOptions"
+                (click)="toggleStatus(statusOption.status)"
+                [ngClass]="{
+                  'yet-to-start-chip': isSelectedStatus(statusOption.status) && statusOption.status === 'Yet to Start',
+                  'ongoing-chip': isSelectedStatus(statusOption.status) && statusOption.status === 'Ongoing',
+                  'completed-chip': isSelectedStatus(statusOption.status) && statusOption.status === 'Completed'
+                }"
+                [matTooltip]="statusOption.status" 
+                [matTooltipPosition]="'above'"
+                matTooltipClass="custom-tooltip"
+                >
+          <mat-icon *ngIf="statusOption.status === 'Completed'">
+          <span class="material-symbols-outlined">check_circle</span>
+          </mat-icon>
+          <mat-icon *ngIf="statusOption.status === 'Yet to Start'">
+            <span class="material-symbols-outlined">clock_loader_60</span>
+          </mat-icon>
+          <mat-icon *ngIf="statusOption.status === 'Ongoing'">
+          <span class="material-symbols-outlined">pace</span>
+        </mat-icon>
+         <div class="count">
+          {{ statusOption.count }}
+        </div>
+      </mat-chip>
+</mat-chip-listbox>
+</div>
+<div class="download-button">
     <button mat-icon-button [matMenuTriggerFor]="exportMenu" class="export-button">
         <mat-icon>save_alt</mat-icon>
     </button>
@@ -70,7 +90,5 @@
       <button mat-menu-item (click)="downloadCSV()" >Download CSV</button>
       <button mat-menu-item (click)="downloadExcel()">Download Excel</button>
     </mat-menu>
-    
-    <!-- <button mat-raised-button color="warn" (click)="resetFilters()" [disabled]="!areFiltersSelected()">Reset</button> -->
   </div>
-  
+</div>
