@@ -1,11 +1,11 @@
-import { Component, EventEmitter, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { CommonService } from '../common.service';
 import { AngularCsv } from 'angular-csv-ext/dist/Angular-csv';
 import * as XLSX from 'xlsx';
 import { MatDateRangePicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
-import { MatSelect } from '@angular/material/select';
+import { MatSelect, MatSelectTrigger } from '@angular/material/select';
 import { MatChip } from '@angular/material/chips';
 
 @Component({
@@ -18,16 +18,25 @@ export class FilterComponent implements OnInit, OnChanges {
   projects: string[] = [];
   types: string[] = [];
   status: string[] = [];
+  tag: string[] = [];
   initiatedDate: string[] = [];
   selectedProjects: string[] = [];
   selectedTypes: string[] = [];
   selectedStatus: string[] = [];
+  selectedTags: string = '';
   filteredData: any[] = [];
   @ViewChild('picker') picker!: MatDateRangePicker<Date>;
   @Output() filtersApplied: EventEmitter<any[]> = new EventEmitter<any[]>();
   @ViewChild('dateSelect') dateSelect!: MatSelect;
+  startDate: string = '';
+  currentDate: string = '';
+  selectedProjectsChips: string[] = [];
+  selectedTypesChips: string[] = [];
+  selectedStatusChips: string[] = [];
+  selectedTagsChips: string[] = [];
+  isFilterCardVisible: boolean = false;
 
-  constructor(private service: CommonService) {
+  constructor(private service: CommonService, private cdr: ChangeDetectorRef) {
     this.handleDateFilter = this.handleDateFilter.bind(this);
   }
 
@@ -40,8 +49,10 @@ export class FilterComponent implements OnInit, OnChanges {
     { label: 'Last 30 Days', value: 'last30' },
     { label: 'Last 60 Days', value: 'last60' },
     { label: 'Last 90 Days', value: 'last90' },
-    { label: 'Custom Range', value: 'custom' },
+    { label: 'Custom', value: 'custom' },
   ];
+
+  defaultOptionViewValue = this.dateFilters[0].label;
 
   selectedDateFilter: string = 'last30';
   dateRange: { start: Date | null, end: Date | null } = { start: null, end: null };
@@ -60,14 +71,17 @@ export class FilterComponent implements OnInit, OnChanges {
     });
   }
   ngOnChanges(): void {
+    this.cdr.detectChanges();
     this.updateStatusOptionsCount();
+
   }
 
   private extractFilterOptions(): void {
     this.projects = this.extractUniqueValues('projects');
     this.types = this.extractUniqueValues('type');
     this.status = this.extractUniqueValues('status');
-    this.initiatedDate = this.extractUniqueValues('initiatedDate')
+    this.initiatedDate = this.extractUniqueValues('initiatedDate');
+    this.tag = this.extractUniqueValues('tag');
   }
   private extractUniqueValues(fieldName: string): string[] {
     const uniqueValues = new Set<string>();
@@ -82,14 +96,20 @@ export class FilterComponent implements OnInit, OnChanges {
   }
 
 
+  // Add a method to toggle the visibility
+  toggleFilterCard(): void {
+    this.isFilterCardVisible = !this.isFilterCardVisible;
+  }
+
   applyFilters(): void {
     this.filteredData = [];
-    if (this.selectedProjects.length > 0 || this.selectedTypes.length > 0 || this.selectedStatus.length > 0) {
+    if (this.selectedProjects.length > 0 || this.selectedTypes.length > 0 || this.selectedStatus.length > 0 || this.selectedTags.length > 0) {
       this.data.forEach(item => {
         if (
           (this.selectedProjects.length === 0 || this.selectedProjects.some(project => item.projects.includes(project))) &&
           (this.selectedTypes.length === 0 || this.selectedTypes.includes(item.type)) &&
-          (this.selectedStatus.length === 0 || this.selectedStatus.includes(item.status))) {
+          (this.selectedStatus.length === 0 || this.selectedStatus.includes(item.status)) &&
+          (this.selectedTags.length === 0 || this.selectedTags.includes(item.tag))) {
 
           const flattenedData = {
             id: item.id,
@@ -99,7 +119,8 @@ export class FilterComponent implements OnInit, OnChanges {
             projects: Array.isArray(item.projects) ? item.projects.join(',') : item.projects,
             type: item.type,
             status: item.status,
-            initiatedDate: item.initiatedDate
+            initiatedDate: item.initiatedDate,
+            tag: item.tag
           };
           this.filteredData.push(flattenedData);
         }
@@ -116,6 +137,9 @@ export class FilterComponent implements OnInit, OnChanges {
       const startDate = new Date();
       startDate.setDate(currentDate.getDate() - days);
 
+      this.startDate = startDate.toISOString().split('T')[0];
+      this.currentDate = currentDate.toISOString().split('T')[0];
+
       this.filteredData = this.filteredData.filter((item) => {
         const initiatedDate = new Date(item.initiatedDate);
         return initiatedDate >= startDate && initiatedDate <= currentDate;
@@ -131,6 +155,10 @@ export class FilterComponent implements OnInit, OnChanges {
 
 
       if (startDate && endDate) {
+        this.startDate = startDate.toISOString().split('T')[0];
+        this.currentDate = endDate.toISOString().split('T')[0];
+
+
         this.filteredData = this.filteredData.filter(item => {
           const itemDate = new Date(item.initiatedDate);
           console.log(itemDate);
@@ -149,6 +177,13 @@ export class FilterComponent implements OnInit, OnChanges {
     }
   }
 
+
+  getDateFilterLabel(selectedDateFilter: string): string {
+    const matchingFilter = this.dateFilters.find(filter => filter.value === selectedDateFilter);
+    return matchingFilter ? matchingFilter.label : '';
+  }
+
+
   private updateStatusOptionsCount(): void {
     this.statusOptions.forEach(option => {
       option.count = this.data.filter(item => item.status === option.status).length;
@@ -159,6 +194,9 @@ export class FilterComponent implements OnInit, OnChanges {
     { status: 'Ongoing', count: 0 },
     { status: 'Yet to Start', count: 0 },
     { status: 'Completed', count: 0 },
+    { status: 'Failed', count: 0 },
+    { status: 'Cancelled', count: 0 }
+
   ];
 
   isSelectedStatus(statusOption: string): boolean {
@@ -183,12 +221,34 @@ export class FilterComponent implements OnInit, OnChanges {
 
 
   areFiltersSelected(): boolean {
-    return this.selectedProjects.length > 0 || this.selectedTypes.length > 0 || this.selectedStatus.length > 0 || this.selectedDateFilter.length > 0;
+    return this.selectedProjects.length > 0 || this.selectedTypes.length > 0 || this.selectedStatus.length > 0 || this.selectedDateFilter.length > 0 || this.selectedTags.length > 0;
+  }
+
+  // Inside your component class
+
+  removeFilter(filterType: string, value: string): void {
+    // Remove the selected filter from the corresponding array
+    switch (filterType) {
+      case 'project':
+        this.selectedProjects = this.selectedProjects.filter(project => project !== value);
+        break;
+      case 'type':
+        this.selectedTypes = this.selectedTypes.filter(type => type !== value);
+        break;
+      case 'tag':
+        this.selectedTags = '';
+        break;
+      // Add cases for other filters as needed
+    }
+
+    // Call applyFilters() or any other relevant function to update the data
+    this.applyFilters();
   }
 
   resetFilters(): void {
     this.selectedProjects = [];
     this.selectedTypes = [];
+    this.selectedTags = '';
     // this.selectedStatus = [];
     this.selectedDateFilter = 'last30';
     this.dateRange = { start: null, end: null };
@@ -199,7 +259,7 @@ export class FilterComponent implements OnInit, OnChanges {
 
 
   private getHeaders(): string[] {
-    return ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'initiatedDate'];
+    return ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'initiatedDate', 'tag'];
   }
 
   downloadCSV(): void {

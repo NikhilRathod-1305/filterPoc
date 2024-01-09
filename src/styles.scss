@@ -49,20 +49,16 @@ body { margin: 0; font-family: $default-font; font-size: 14px;}
     @include mat.all-component-densities(-2);
   }
 
-//   .mat-mdc-text-field-wrapper {
-//     height: 35px !important; 
-//     flex: auto;
-//     display: flex;
-//     justify-content: center;
-//     text-align: center;
-// }
-
 .mat-mdc-option .mdc-list-item__primary-text{
     display: flex !important;
     text-wrap: nowrap !important;
     align-items: center !important;
   }
-
+.mdc-list-item__primary-text{
+  width: 100%;
+  justify-content: space-between;
+  height: 40px;
+}
 .mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c1205077789-6.mdc-text-field--outlined{
     padding-right: 16px;
 }
@@ -74,7 +70,7 @@ body { margin: 0; font-family: $default-font; font-size: 14px;}
 }
 
 .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--outlined.mdc-text-field--no-label{
-  width: 212px;
+    width: 100%;
     height: 40px;
     display: flex;
     flex-direction: column;
@@ -82,7 +78,7 @@ body { margin: 0; font-family: $default-font; font-size: 14px;}
     padding-right: 16px;
 }
 
-.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c1205077789-9.mdc-text-field--outlined.mdc-text-field--no-label{
+.mat-mdc-text-field-wrapper.mdc-text-field.ng-tns-c1205077789-11.mdc-text-field--outlined.mdc-text-field--no-label{
   width: 85%;
   height: 40px;
 }

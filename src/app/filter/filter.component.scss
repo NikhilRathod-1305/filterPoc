@@ -1,37 +1,56 @@
 @import '../../styles.scss';
 
 .filters-container{
-  display: flex;
   align-items: center;
-  margin-left: 30px;
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
   font-family: $default-font;
 
   .filters{
+    width: calc(25% - 15px);
+    align-items: center;
     display: flex;
+    justify-content: flex-start;
     flex-direction: column;
     margin: 10px 0 0 0;
     gap: 8px;
     mat-label{
-      margin-left: 15px;
+      width: 100%;
     }
   }
+  
+}
+.clear-button-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 14px;
 
   .clear-button{
-    margin: 30px 0 0 0 ;
     color: $primary-color;
     font-family: $default-font;
     font-weight: 600;
     cursor: pointer;
     font-size: 14px;
+    margin:0;
   }
 }
 
-
 mat-form-field{
     margin: 0 10px 0 10px;
+    width: 100%;
 }
 
-
+.card-contents{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
   .custom-date{
     display: flex;
@@ -47,17 +66,25 @@ mat-form-field{
     // width: 59px;
     display: none;
   }
+  .date-range-picker{
+    display: none;
+  }
 .export-button{
   color: $primary-color;
 }
 
 .filter-second-row{
-  margin: 14px 0px 0px 60px;
-  width: 90%;
+  // margin: 0px 0px 0px 40px;
+  // margin-bottom: 14px;
+  width: 100%;
   display: flex;
   // justify-content: center;
   justify-content: space-between;
-  gap: 10px;
+  // align-items: center;
+  // gap: 10px;
+  align-items: center;
+  z-index: 1;
+    margin-bottom: 10px;
 }
 
 /* Add this to your styles.scss or component's style file */
@@ -66,7 +93,7 @@ mat-form-field{
 mat-icon{
   color: #ffbd31 !important;
 }}
-mat-chip{
+.status-chip{
   width: 68px;
   height: 30px;
   border-radius: 15px;
@@ -98,7 +125,100 @@ mat-icon{
 }
 }
 
+.cancelled {
+  background-color: #f0a5ff !important;
+mat-icon{
+  color: #58235edc !important;
+}}
+
+.failed {
+  background-color: #ffb5b5 !important;
+mat-icon{
+  color: #ab0b0b !important;
+}}
+
 .custom-tooltip{
   background-color: #225E9E !important;
   color: #d9fff6 !important;
+}
+
+mat-card{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 16px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1294117647);
+  border-radius: 10px;
+}
+
+.main-container-date-range{
+  h1{
+    margin: 10px 0px 2px 0px;
+    font-style: italic;
+    font-weight: lighter;
+    background-color: #fff;
+    color: #333333;
+    font-size: 14px;
+  }
+}
+
+.selected-filters{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 95%;
+  margin-left: 40px;
+  mat-chip{
+    margin:5px 5px 0px 5px;
+  }
+}
+.project-chip{
+  background-color:#eeb9b99e !important;
+  p{
+    color:black;
+  }
+}
+
+.type-chip{
+  background-color:#facb9593 !important;
+  p{
+    color:black;
+  }
+}
+
+.tags-chip{
+  background-color:#bceda5c5 !important;
+  p{
+    color:black;
+  }
+}
+
+.filter-button{
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  border: 2px solid #225E9E;
+  border-radius: 4px;
+  width: 124px;
+  height: 40px;
+  cursor: pointer;
+  color: $primary-color;
+
+  h1{
+    font-size: 14px;
+  }
+}
+.filter-card-container {
+  transition: height 0.3s ease; /* Add a smooth transition effect */
+  overflow: hidden;
+  width: 100%;
+  // max-height: 500px; /* Set a maximum height for the filter card container */
+}
+.download-button{
+  display: flex;
+  align-items: center;
 }

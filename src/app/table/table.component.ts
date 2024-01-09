@@ -20,7 +20,13 @@ export class TableComponent implements OnChanges {
 
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
-  displayedColumns: string[] = ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'initiatedDate'];
+  displayedColumns: string[] = ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'tag', 'initiatedDate'];
+
+  formatColumnName(columnName: string): string {
+    // Replace camelCase with words separated by spaces
+    return columnName.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
+  }
+  formattedColumns: string[] = this.displayedColumns.map(column => this.formatColumnName(column));
 
   ngOnChanges(): void {
     this.initializeDataSource();
