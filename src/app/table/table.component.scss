@@ -7,7 +7,6 @@
     display: flex;
     overflow: auto;
     flex-direction: column;
-    height: 75vh;
     position: relative;
     .table{
       box-shadow: none;
@@ -86,19 +85,40 @@
     }
   }
     
-  mat-paginator {
-    margin-top: auto; /* Push the paginator to the bottom */
-  }
+  // mat-paginator {
+  //   // margin-top: auto; /* Push the paginator to the bottom */
+  // }
 
   .mdc-data-table__cell, .mdc-data-table__header-cell {
     padding: 0 16px 0 16px;
 }
 
 .no-data-message{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+
+  color: #2e3b52;
+  text-align: center;
 }
 
   }
   
+  ::ng-deep .mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
+    opacity: 1 !important;
+  }
+  
+  ::ng-deep .mat-sort-header-arrow{
+    color: #fff;
+  }
+
+  .no-data-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-collapse: separate;
+    height: 40px;
+    border-spacing: 0 10px;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0,0.1);
+    // margin-top: 16px; 
+    margin-bottom: 16px;
+    border-bottom-left-radius: 8px ;
+    border-bottom-right-radius: 8px ;
+  }

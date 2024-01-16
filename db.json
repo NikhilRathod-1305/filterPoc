@@ -673,6 +673,116 @@
       "status": "Ongoing",
       "initiatedDate": "2023-12-31",
       "tag": "High-priority"
+    },
+    {
+      "id": 61,
+      "name": "Liam Wilson",
+      "phoneNumber": "555-111-2222",
+      "email": "liam.wilson@example.com",
+      "projects": ["Project Orion", "Project Titan"],
+      "type": "Software Development",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-12-01",
+      "tag": "High-priority"
+    },
+    {
+      "id": 62,
+      "name": "Emma Johnson",
+      "phoneNumber": "555-222-3333",
+      "email": "emma.johnson@example.com",
+      "projects": ["Project Atlas", "Project Nebula"],
+      "type": "Infrastructure",
+      "status": "Ongoing",
+      "initiatedDate": "2023-12-05",
+      "tag": "Important"
+    },
+    {
+      "id": 63,
+      "name": "Oliver Davis",
+      "phoneNumber": "555-333-4444",
+      "email": "oliver.davis@example.com",
+      "projects": ["Project Galaxy", "Project Artemis"],
+      "type": "Data Analysis",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-12-10",
+      "tag": "Not-important"
+    },
+    {
+      "id": 64,
+      "name": "Ava Brown",
+      "phoneNumber": "555-444-5555",
+      "email": "ava.brown@example.com",
+      "projects": ["Project Titan", "Project Orion"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2023-12-15",
+      "tag": "High-priority"
+    },
+    {
+      "id": 65,
+      "name": "Noah Taylor",
+      "phoneNumber": "555-555-6666",
+      "email": "noah.taylor@example.com",
+      "projects": ["Project Gemini", "Project Nebula"],
+      "type": "Infrastructure",
+      "status": "Ongoing",
+      "initiatedDate": "2023-12-20",
+      "tag": "Important"
+    },
+    {
+      "id": 66,
+      "name": "Isabella Anderson",
+      "phoneNumber": "555-666-7777",
+      "email": "isabella.anderson@example.com",
+      "projects": ["Project Artemis", "Project Atlas"],
+      "type": "Research",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-12-25",
+      "tag": "Not-important"
+    },
+    {
+      "id": 67,
+      "name": "Ethan Johnson",
+      "phoneNumber": "555-777-8888",
+      "email": "ethan.johnson@example.com",
+      "projects": ["Project Galaxy", "Project Titan"],
+      "type": "Infrastructure",
+      "status": "Ongoing",
+      "initiatedDate": "2023-12-28",
+      "tag": "High-priority"
+    },
+    {
+      "id": 68,
+      "name": "Mia Davis",
+      "phoneNumber": "555-888-9999",
+      "email": "mia.davis@example.com",
+      "projects": ["Project Orion", "Project Nebula"],
+      "type": "Software Development",
+      "status": "Completed",
+      "initiatedDate": "2023-12-29",
+      "tag": "Important"
+    },
+    {
+      "id": 69,
+      "name": "Lucas Wilson",
+      "phoneNumber": "555-999-0000",
+      "email": "lucas.wilson@example.com",
+      "projects": ["Project Artemis", "Project Titan"],
+      "type": "Data Analysis",
+      "status": "Yet to Start",
+      "initiatedDate": "2023-12-31",
+      "tag": "Not-important"
+    },
+    {
+      "id": 70,
+      "name": "Ella Taylor",
+      "phoneNumber": "555-000-1111",
+      "email": "ella.taylor@example.com",
+      "projects": ["Project Atlas", "Project Galaxy"],
+      "type": "Research",
+      "status": "Ongoing",
+      "initiatedDate": "2023-12-31",
+      "tag": "High-priority"
     }
   ]
 }

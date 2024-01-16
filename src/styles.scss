@@ -103,3 +103,10 @@ mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color.ng-star-
   flex-direction: column;
   justify-content: center;
 }
+
+.mat-mdc-option .mat-pseudo-checkbox-minimal{
+  display: none;
+}
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text{
+  font-weight: bolder;
+}

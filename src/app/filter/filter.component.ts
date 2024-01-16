@@ -257,6 +257,18 @@ export class FilterComponent implements OnInit, OnChanges {
     this.applyFilters();
   }
 
+  refreshFilters(): void {
+    this.selectedProjects = [];
+    this.selectedTypes = [];
+    this.selectedTags = '';
+    this.selectedStatus = ['Ongoing'];
+    this.selectedDateFilter = 'last30';
+    this.dateRange = { start: null, end: null };
+    this.range.controls['start'].setValue(null);
+    this.range.controls['end'].setValue(null);
+    this.applyFilters();
+  }
+
 
   private getHeaders(): string[] {
     return ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'initiatedDate', 'tag'];

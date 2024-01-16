@@ -1,6 +1,6 @@
 <!-- src/app/filter-component/filter-component.component.html -->
 <div class="main-container-date-range">
-  <h1>Showing results from {{ startDate }} to {{ currentDate }} </h1>
+  <h1>Showing results from {{ startDate | date : "dd MMM yyyy" }} to {{ currentDate | date : "dd MMM yyyy" }} </h1>
 </div>
 <div class="filter-second-row">
   <div class="chip-list">
@@ -39,7 +39,13 @@
       </mat-chip>
 </mat-chip-listbox>
 </div>
+
 <div class="download-button">
+  <div>
+    <button mat-icon-button (click)="refreshFilters()" class="refresh-button">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
     <button mat-icon-button [matMenuTriggerFor]="exportMenu" class="export-button">
         <mat-icon>save_alt</mat-icon>
     </button>
