@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
 import { FilterComponent } from './filter/filter.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -27,6 +27,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { SearchFilterComponent } from './common/search-filter/search-filter.component';
+import { ChipComponent } from './chip/chip.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { MatCardModule } from '@angular/material/card';
     TableComponent,
     FilterComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SearchFilterComponent,
+    ChipComponent
   ],
   imports: [
     BrowserModule,

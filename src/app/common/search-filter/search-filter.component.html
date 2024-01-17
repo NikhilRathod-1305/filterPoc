@@ -1,0 +1,34 @@
+<div class="search-filter-container">
+    <form >
+      <mat-label></mat-label>
+      <mat-form-field
+      id="search-form"
+        class="search-filter-container-field search-input"
+        appearance="outline"
+      >
+        <div class="icon">
+          <mat-icon
+            class="search-icon"
+            matPrefix
+            >search</mat-icon
+          >
+          <input
+            matInput
+            class="search-filter-container-input"
+            type="text"
+            formControlName="searchInput"
+            placeholder="Search"
+            maxlength="25"
+          />
+          <mat-icon
+            class="clear"
+            matSuffix
+            (click)="searchClearAll()"
+            *ngIf="searchConfig?.isSearchClearIcon"
+            >clear</mat-icon
+          >
+        </div>
+      </mat-form-field>
+    </form>
+  </div>
+  

@@ -1,0 +1,25 @@
+@import './../../../assets/styles/styles.scss';
+
+.header-container{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 54px;
+    background-color: $primary-color;
+    margin-top: 0;
+    padding: 5px;
+    img{
+        width: 80px;
+    }
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px;
+    font-weight: 600;
+    color: white;
+    font-size: 40px;
+}

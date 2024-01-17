@@ -1,11 +1,20 @@
-<!-- src/app/filter-component/filter-component.component.html -->
+<div class="filter-top">
+  <h1>
+    User Details
+  </h1>
+  <div class="search-filter">
+    <app-search-filter (onKeyUpSearch)="getSearchKey($event)" [isShowSearchOnly]="true" [searchConfig]="searchConfigData">
+    </app-search-filter>
+  </div>
+</div>
+  
 <div class="main-container-date-range">
   <h1>Showing results from {{ startDate | date : "dd MMM yyyy" }} to {{ currentDate | date : "dd MMM yyyy" }} </h1>
 </div>
 <div class="filter-second-row">
   <div class="chip-list">
 <mat-chip-listbox>
-  <mat-chip class="status-chip" *ngFor="let statusOption of statusOptions"
+  <mat-chip id="status-chip" class="status-chip" *ngFor="let statusOption of statusOptions"
                 (click)="toggleStatus(statusOption.status)"
                 [ngClass]="{
                   'yet-to-start-chip': isSelectedStatus(statusOption.status) && statusOption.status === 'Yet to Start',
@@ -74,19 +83,19 @@
     <mat-label>
       Projects
     </mat-label>
-    <mat-form-field appearance="outline">
+    <mat-form-field id="filter-form" appearance="outline">
       <mat-select [(ngModel)]="selectedProjects" (ngModelChange)="applyFilters()" multiple
       placeholder="Select Projects">
         <mat-option *ngFor="let project of projects" [value]="project">{{ project }}</mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field> 
   </div>
 
   <div class="filters">
     <mat-label>
       Category
     </mat-label>
-    <mat-form-field appearance="outline">
+    <mat-form-field id="filter-form" appearance="outline">
       <mat-select [(ngModel)]="selectedTypes" (ngModelChange)="applyFilters()" multiple
       placeholder="Select Category">
         <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
@@ -98,7 +107,7 @@
     <mat-label>
       Tags
     </mat-label>
-    <mat-form-field appearance="outline">
+    <mat-form-field id="filter-form" appearance="outline">
       <mat-select [(ngModel)]="selectedTags" (ngModelChange)="applyFilters()"
       placeholder="Select Tags">
         <mat-option *ngFor="let tag of tag" [value]="tag">{{ tag }}</mat-option>
@@ -110,7 +119,7 @@
     <mat-label>
       Period
     </mat-label>
-  <mat-form-field appearance="outline" class="date-filter">
+  <mat-form-field id="filter-form" appearance="outline" class="date-filter">
     <mat-select #dateSelect [(ngModel)]="selectedDateFilter" (ngModelChange)="applyFilters()"
     placeholder="Select Initiated Date">
     <mat-select-trigger #dateSelectTrigger>

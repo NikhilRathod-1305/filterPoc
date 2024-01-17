@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
-import { CommonService } from '../common.service';
+import { CommonService } from '../common/services/common.service';
 import { AngularCsv } from 'angular-csv-ext/dist/Angular-csv';
 import * as XLSX from 'xlsx';
 import { MatDateRangePicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
@@ -35,6 +35,7 @@ export class FilterComponent implements OnInit, OnChanges {
   selectedStatusChips: string[] = [];
   selectedTagsChips: string[] = [];
   isFilterCardVisible: boolean = false;
+  searchKey!: string;
 
   constructor(private service: CommonService, private cdr: ChangeDetectorRef) {
     this.handleDateFilter = this.handleDateFilter.bind(this);
@@ -96,7 +97,6 @@ export class FilterComponent implements OnInit, OnChanges {
   }
 
 
-  // Add a method to toggle the visibility
   toggleFilterCard(): void {
     this.isFilterCardVisible = !this.isFilterCardVisible;
   }
@@ -171,7 +171,7 @@ export class FilterComponent implements OnInit, OnChanges {
   }
 
   openDateRangePicker(picker: any): void {
-    this.selectedDateFilter = 'custom'; // Set the selected value to 'custom'
+    this.selectedDateFilter = 'custom'; 
     if (picker) {
       picker.open()
     }
@@ -199,6 +199,13 @@ export class FilterComponent implements OnInit, OnChanges {
 
   ];
 
+  searchConfigData = {
+    isSearchIcon: true,
+    placeholder: "Search",
+    isSearchClearIcon: true,
+    maxLengthValue: 25,
+  };
+
   isSelectedStatus(statusOption: string): boolean {
     return this.selectedStatus.includes(statusOption);
   }
@@ -214,20 +221,20 @@ export class FilterComponent implements OnInit, OnChanges {
   }
 
   handleDateFilter(selectedDateData: any): void {
-    // Handle date filter logic if needed
     console.log('Date Filter Applied:', selectedDateData);
-    this.applyFilters(); // Trigger applying filters after date filter changes
+    this.applyFilters(); 
   }
 
+  getSearchKey(data: any) {
+    this.searchKey = data;
+  }
 
   areFiltersSelected(): boolean {
     return this.selectedProjects.length > 0 || this.selectedTypes.length > 0 || this.selectedStatus.length > 0 || this.selectedDateFilter.length > 0 || this.selectedTags.length > 0;
   }
 
-  // Inside your component class
 
   removeFilter(filterType: string, value: string): void {
-    // Remove the selected filter from the corresponding array
     switch (filterType) {
       case 'project':
         this.selectedProjects = this.selectedProjects.filter(project => project !== value);
@@ -238,10 +245,7 @@ export class FilterComponent implements OnInit, OnChanges {
       case 'tag':
         this.selectedTags = '';
         break;
-      // Add cases for other filters as needed
     }
-
-    // Call applyFilters() or any other relevant function to update the data
     this.applyFilters();
   }
 

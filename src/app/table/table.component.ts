@@ -15,7 +15,6 @@ export class TableComponent implements OnChanges {
   @ViewChild(MatSort) sort!: MatSort;
   @Input() data: any[] = [];
   dataSource!: MatTableDataSource<any>;
-  dataSource2: MatTableDataSource<any> | null | undefined;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
   pageLength!: number;
@@ -52,4 +51,6 @@ export class TableComponent implements OnChanges {
   }
 
   formattedColumns: string[] = this.displayedColumns.map(column => this.formatColumnName(column));
+
+  
 }

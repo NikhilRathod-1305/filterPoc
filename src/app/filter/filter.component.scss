@@ -1,4 +1,23 @@
-@import '../../styles.scss';
+@import './../../assets/styles/styles.scss';
+
+.filter-top{
+  display: flex;
+  justify-content: space-between;
+  h1{
+   font-size: 24px;
+    color: $primary-color;
+    font-weight: 700;
+  }
+}
+.search-filter {
+  font-family: $default-font;
+  display: flex;
+  justify-content: flex-end;
+  
+  app-search-filter{  
+    width: 262px;
+  }
+}
 
 .filters-container{
   align-items: center;
@@ -154,7 +173,7 @@ mat-card{
 
 .main-container-date-range{
   h1{
-    margin: 10px 0px 2px 0px;
+    margin: 0px 0px 2px 0px;
     font-style: italic;
     font-weight: lighter;
     background-color: #fff;
@@ -167,8 +186,8 @@ mat-card{
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 95%;
-  margin-left: 40px;
+  width: 100%;
+  margin-left: 9px;
   mat-chip{
     margin:5px 5px 0px 5px;
   }

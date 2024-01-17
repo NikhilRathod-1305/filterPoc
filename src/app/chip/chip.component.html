@@ -1,0 +1,7 @@
+<div [ngClass]="chipClass">
+    <span *ngIf="icon" class="chip-icon">
+      <mat-icon>{{ icon }}</mat-icon>
+    </span>
+    <span class="chip-text">{{ text }}</span>
+    <span *ngIf="count" class="chip-count">{{ count }}</span>
+  </div>

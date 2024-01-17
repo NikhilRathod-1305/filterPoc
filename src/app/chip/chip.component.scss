@@ -1,0 +1,61 @@
+/* Add your common chip styles here */
+
+.chip-icon {
+    /* Add icon styles here */
+  }
+
+  .chip-text {
+    /* Add text styles here */
+  }
+
+  .chip-count {
+    /* Add count styles here */
+  }
+
+  /* Add specific chip styles here */
+
+  .completed-chip {
+    background-color: #fff7e0 !important;
+    mat-icon {
+      color: #ffbd31 !important;
+    }
+  }
+
+  .status-chip {
+    width: 68px;
+    height: 30px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.0784313725);
+  }
+
+  /* Add more specific styles for other chip types */
+
+  .yet-to-start-chip {
+    background-color: #cce7ff !important;
+    color: #000;
+    mat-icon {
+      color: #225E9E;
+    }
+  }
+
+  .ongoing-chip {
+    background-color: #d9fff6 !important;
+    color: #000;
+    mat-icon {
+      color: #17C69C;
+    }
+  }
+
+  .cancelled {
+    background-color: #f0a5ff !important;
+    mat-icon {
+      color: #58235edc !important;
+    }
+  }
+
+  .failed {
+    background-color: #ffb5b5 !important;
+    mat-icon {
+      color: #ab0b0b !important;
+    }
+  }
