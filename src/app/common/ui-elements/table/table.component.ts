@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { MyCustomPaginatorIntl } from '../common/helpers/my-custom-paginator-intl/my-custom-paginator-intl.component';
+import { MyCustomPaginatorIntl } from '../../helpers/my-custom-paginator-intl/my-custom-paginator-intl.component';
 import { MatSort } from '@angular/material/sort';
 
 @Component({

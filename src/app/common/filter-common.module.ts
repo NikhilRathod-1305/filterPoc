@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TableComponent } from './ui-elements/table/table.component';
+import { ChipComponent } from '../chip/chip.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SearchFilterComponent } from './ui-elements/search-filter/search-filter.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,17 +27,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
-import { FilterCommonModule } from './common/filter-common.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-
+    TableComponent,
+    FilterComponent,
+    HeaderComponent,
+    FooterComponent,
+    SearchFilterComponent,
+    ChipComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    CommonModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
@@ -54,9 +61,14 @@ import { FilterCommonModule } from './common/filter-common.module';
     MatChipsModule,
     MatTooltipModule,
     MatCardModule,
-    FilterCommonModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports:[
+    TableComponent,
+    FilterComponent,
+    HeaderComponent,
+    FooterComponent,
+    SearchFilterComponent,
+    ChipComponent
+  ]
 })
-export class AppModule { }
+export class FilterCommonModule { }

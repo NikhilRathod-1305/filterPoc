@@ -14,17 +14,16 @@
           >
           <input
             matInput
+            name="searchTerm"
             class="search-filter-container-input"
-            type="text"
-            formControlName="searchInput"
+            [(ngModel)]="searchTerm"
+            (ngModelChange)="onSearch()"
             placeholder="Search"
-            maxlength="25"
           />
           <mat-icon
             class="clear"
             matSuffix
             (click)="searchClearAll()"
-            *ngIf="searchConfig?.isSearchClearIcon"
             >clear</mat-icon
           >
         </div>

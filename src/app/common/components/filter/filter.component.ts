@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
-import { CommonService } from '../common/services/common.service';
+import { CommonService } from '../../services/common.service';
 import { AngularCsv } from 'angular-csv-ext/dist/Angular-csv';
 import * as XLSX from 'xlsx';
 import { MatDateRangePicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
@@ -131,6 +131,19 @@ export class FilterComponent implements OnInit, OnChanges {
       this.filteredData = [...this.data]
     }
 
+if (this.searchKey && this.searchKey.trim() !== '') {
+    const searchLower = this.searchKey.trim().toLowerCase();
+    this.filteredData = this.filteredData.filter(item =>
+      (item.name && item.name.toLowerCase().includes(searchLower)) ||
+      (item.phoneNumber && item.phoneNumber.includes(searchLower)) ||
+      (item.email && item.email.toLowerCase().includes(searchLower)) ||
+      ((Array.isArray(item.projects) ? item.projects.join(', ') : item.projects) || '').toLowerCase().includes(searchLower) ||
+      (item.status && item.status.toLowerCase().includes(searchLower)) ||
+      (item.tag && item.tag.toLowerCase().includes(searchLower)) ||
+      (item.type && item.type.toLowerCase().includes(searchLower))
+    );
+  }
+
     if (this.selectedDateFilter === 'last30' || this.selectedDateFilter === 'last60' || this.selectedDateFilter === 'last90') {
       const days = this.selectedDateFilter === 'last30' ? 30 : this.selectedDateFilter === 'last60' ? 60 : 90;
       const currentDate = new Date();
@@ -166,6 +179,9 @@ export class FilterComponent implements OnInit, OnChanges {
         });
       }
     }
+
+
+    
     // this.updateStatusOptionsCount();
     this.filtersApplied.emit(this.filteredData);
   }
@@ -206,6 +222,11 @@ export class FilterComponent implements OnInit, OnChanges {
     maxLengthValue: 25,
   };
 
+  onSearchChanged(searchTerm: string): void {
+    this.searchKey = searchTerm;
+    this.applyFilters();
+  }
+  
   isSelectedStatus(statusOption: string): boolean {
     return this.selectedStatus.includes(statusOption);
   }
@@ -223,10 +244,6 @@ export class FilterComponent implements OnInit, OnChanges {
   handleDateFilter(selectedDateData: any): void {
     console.log('Date Filter Applied:', selectedDateData);
     this.applyFilters(); 
-  }
-
-  getSearchKey(data: any) {
-    this.searchKey = data;
   }
 
   areFiltersSelected(): boolean {
@@ -280,24 +297,24 @@ export class FilterComponent implements OnInit, OnChanges {
 
   downloadCSV(): void {
     const headers = this.getHeaders();
-    if (this.filteredData.length === 0) {
-      new AngularCsv([headers, ...this.data], 'filtered_data');
-    }
-    else {
+    // if (this.filteredData.length === 0) {
+    //   new AngularCsv([headers, ...this.data], 'filtered_data');
+    // }
+    // else {
       new AngularCsv([headers, ...this.filteredData], 'filtered_data');
 
-    }
+    // }
   }
 
   downloadExcel(): void {
     const headers = this.getHeaders();
 
-    if (this.filteredData.length === 0) {
-      const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([...this.data]);
-      const wb: XLSX.WorkBook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-      XLSX.writeFile(wb, 'all_projects.xlsx');
-    } else {
+    // if (this.filteredData.length === 0) {
+    //   const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet([...this.data]);
+    //   const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    //   XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    //   XLSX.writeFile(wb, 'all_projects.xlsx');
+    // } else {
       const formattedData = this.filteredData.map(item => {
         const formattedItem = { ...item };
 
@@ -318,4 +335,4 @@ export class FilterComponent implements OnInit, OnChanges {
     }
   }
 
-}
+// }

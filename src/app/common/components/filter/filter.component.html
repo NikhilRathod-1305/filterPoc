@@ -3,8 +3,8 @@
     User Details
   </h1>
   <div class="search-filter">
-    <app-search-filter (onKeyUpSearch)="getSearchKey($event)" [isShowSearchOnly]="true" [searchConfig]="searchConfigData">
-    </app-search-filter>
+    <app-search-filter (searchChanged)="onSearchChanged($event)"></app-search-filter>
+
   </div>
 </div>
   
