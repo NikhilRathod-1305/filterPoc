@@ -162,7 +162,7 @@
 .status-chip {
   width: 96px;
   padding: 0 8px 0 5px;
-  height: 30px;
+  height: 24px;
   border-radius: 15px;
   box-shadow:$status-chip-box-shadow;
 }
@@ -235,7 +235,6 @@
 .chip-container{
   display: flex;
   align-items: center;
-  padding-top: 3px;
 }
 
 mat-icon{
