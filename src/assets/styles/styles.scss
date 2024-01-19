@@ -35,10 +35,6 @@ $filterPoc-theme: mat.define-light-theme((
 
 body { margin: 0;overflow-x: hidden;}
 
-$secondary-color: #dceeff;
-$primary-color :#225E9E;
-$default-font: "Heebo-Regular", sans-serif;
-
 @font-face {
   font-family: 'Caveat';
   src: url('./../fonts/Caveat-VariableFont_wght.ttf');
@@ -53,6 +49,8 @@ $default-font: "Heebo-Regular", sans-serif;
   font-family: 'RubikDoodleShadow-Regular';
   src: url('./../fonts/RubikDoodleShadow-Regular.ttf');
 }
+
+@import './variables.scss';
 
 
 html, body { height: 100%; }

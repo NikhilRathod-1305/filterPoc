@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableComponent } from './ui-elements/table/table.component';
-import { ChipComponent } from '../chip/chip.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -35,8 +34,7 @@ import { MatCardModule } from '@angular/material/card';
     FilterComponent,
     HeaderComponent,
     FooterComponent,
-    SearchFilterComponent,
-    ChipComponent
+    SearchFilterComponent
   ],
   imports: [
     CommonModule,
@@ -67,8 +65,6 @@ import { MatCardModule } from '@angular/material/card';
     FilterComponent,
     HeaderComponent,
     FooterComponent,
-    SearchFilterComponent,
-    ChipComponent
-  ]
+    SearchFilterComponent  ]
 })
 export class FilterCommonModule { }

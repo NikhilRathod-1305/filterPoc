@@ -1,4 +1,5 @@
 @import './../../../../assets/styles/styles.scss';
+@import './../../../../assets/styles/variables.scss';
 
 .filter-top{
   display: flex;
@@ -101,6 +102,9 @@ mat-form-field{
   justify-content: space-between;
   // align-items: center;
   // gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   align-items: center;
   z-index: 1;
     margin-bottom: 10px;
@@ -108,15 +112,15 @@ mat-form-field{
 
 /* Add this to your styles.scss or component's style file */
 .completed-chip {
-  background-color: #fff7e0 !important;
+  background-color: $completed-chip-color !important;
 mat-icon{
-  color: #ffbd31 !important;
+  color: $completed-chip-color-icon !important;
 }}
 .status-chip{
   width: 68px;
   height: 30px;
   border-radius: 15px;
-  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.0784313725);
+  box-shadow:$status-chip-box-shadow;
 }
 
 .count{
@@ -129,36 +133,36 @@ mat-icon{
 }
 
 .yet-to-start-chip {
-  background-color: #cce7ff !important;
-  color: #000; /* Adjust text color accordingly */
+  background-color: $yet-to-start-chip-color !important;
+  color: $color-black; /* Adjust text color accordingly */
   mat-icon{
-    color: #225E9E;
+    color: $primary-color;
   }
 }
 
 .ongoing-chip {
-  background-color: #d9fff6 !important;
-  color: #000; /* Adjust text color accordingly */
+  background-color: $ongoing-chip-color !important;
+  color: $color-black; /* Adjust text color accordingly */
 mat-icon{
-  color: #17C69C;
+  color: $ongoing-chip-color-icon;
 }
 }
 
 .cancelled {
-  background-color: #f0a5ff !important;
+  background-color: $cancelled-chip-color !important;
 mat-icon{
-  color: #58235edc !important;
+  color: $cancelled-chip-color-icon !important;
 }}
 
 .failed {
-  background-color: #ffb5b5 !important;
+  background-color: $failed-chip-color !important;
 mat-icon{
-  color: #ab0b0b !important;
+  color: $failed-chip-color-icon !important;
 }}
 
 .custom-tooltip{
-  background-color: #225E9E !important;
-  color: #d9fff6 !important;
+  background-color: $primary-color !important;
+  color: $tool-tip-color !important;
 }
 
 mat-card{
@@ -167,7 +171,7 @@ mat-card{
   flex-direction: row;
   justify-content: flex-start;
   padding: 16px;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1294117647);
+  box-shadow: $filter-card-box-shadow;
   border-radius: 10px;
 }
 
@@ -176,8 +180,8 @@ mat-card{
     margin: 0px 0px 2px 0px;
     font-style: italic;
     font-weight: lighter;
-    background-color: #fff;
-    color: #333333;
+    background-color: $color-white;
+    color: $color-dark-grey;
     font-size: 14px;
   }
 }
@@ -193,23 +197,23 @@ mat-card{
   }
 }
 .project-chip{
-  background-color:#eeb9b99e !important;
+  background-color:$project-chip-background-color !important;
   p{
-    color:black;
+    color:$color-black;
   }
 }
 
 .type-chip{
-  background-color:#facb9593 !important;
+  background-color:$type-chip-background-color !important;
   p{
-    color:black;
+    color:$color-black;
   }
 }
 
 .tags-chip{
-  background-color:#bceda5c5 !important;
+  background-color:$tags-chip-background-color !important;
   p{
-    color:black;
+    color:$color-black;
   }
 }
 
@@ -220,7 +224,7 @@ mat-card{
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  border: 2px solid #225E9E;
+  border: 2px solid $primary-color;
   border-radius: 4px;
   width: 124px;
   height: 40px;
@@ -232,12 +236,11 @@ mat-card{
   }
 }
 .filter-card-container {
-  transition: height 0.3s ease; /* Add a smooth transition effect */
+  transition: height 0.3s ease;
   overflow: hidden;
   width: 100%;
-  // max-height: 500px; /* Set a maximum height for the filter card container */
 }
-.download-button{
+.second-row-buttons{
   display: flex;
   align-items: center;
 }
@@ -246,3 +249,11 @@ mat-card{
   color: $primary-color;
 }
 
+.view-all-button{
+  h1{
+    font-size: 14px;
+    font-weight: 600;
+    color: $primary-color;
+    cursor: pointer;
+  }
+}

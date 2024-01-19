@@ -1,3 +1,5 @@
+@import './../../../../assets/styles/variables.scss';
+
 .search-filter-container {
     width: 100%;
     display: flex;
@@ -15,7 +17,7 @@
         font-size: 16px;
         display: flex;
         align-items: center;
-        color: grey;
+        color: $color-grey;
       }
       input {
         font-size: 1.2rem;
@@ -24,7 +26,7 @@
         padding: 0px;
         font-size: 16px;
         margin-right: 4%;
-        color: gray;
+        color: $color-grey;
         display: flex;
         align-items: center;
         cursor: pointer;
@@ -33,7 +35,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: grey;
+        color: $color-grey;
         gap: 9px;
         margin-left: 4px;
       }
@@ -41,7 +43,7 @@
   
     &-input {
       // width: 100%;
-      border: 1px solid black;
+      border: 1px solid $color-black;
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -55,7 +57,7 @@
         }
         input::placeholder {
           font-size: 12px;
-          color:gray;
+          color:$color-grey;
         }
         mat-icon {
           cursor: pointer;
@@ -66,7 +68,7 @@
   mat-label {
     font-size: 14px;
     margin-bottom: 5px;
-        color: black;
+        color: $color-black;
   }
   
   mat-form-field {
@@ -77,7 +79,7 @@
           }
           input::placeholder, textarea::placeholder {
             font-size: 14px;
-            color: gray;
+            color: $color-grey;
           }
     }
   }

@@ -1,13 +1,13 @@
-@import './../../../../assets/styles/styles.scss';
+@import './../../../../assets/styles/variables.scss';
 
   .table-container {
     width: 100%;
     border: none;
     box-shadow: none;
     display: flex;
-    overflow: auto;
+    overflow-y: auto;
     flex-direction: column;
-    height: 68vh;
+    height: 66vh;
     position: relative;
     .table{
       box-shadow: none;
@@ -19,8 +19,8 @@
     font-family: $default-font !important;
     border-radius: 8px !important;
     height: 40px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    color: white;
+    box-shadow: $table-row-box-shadow;
+    color: $color-white;
     }
     .table-data:first-child {
       height: auto;
@@ -33,7 +33,7 @@
 
   .table-data {
     font-family: $default-font !important;
-    color: #2e3b52;
+    color: $table-data-color;
     // width: -moz-fit-content;
     // width: fit-content;
     // max-width: 100px;
@@ -86,7 +86,7 @@
       padding: 8px;
       height: 40px;
       border-spacing: 0 10px;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: $table-row-box-shadow;
       height: 40px;
       border-radius: 8px;
     }
@@ -102,7 +102,7 @@
 
 .no-data-message{
 
-  color: #2e3b52;
+  color: $table-data-color;
   text-align: center;
 }
 
@@ -113,7 +113,7 @@
   }
   
   ::ng-deep .mat-sort-header-arrow{
-    color: #fff;
+    color: $color-white;
   }
 
   .no-data-row{
@@ -123,9 +123,123 @@
     border-collapse: separate;
     height: 40px;
     border-spacing: 0 10px;
-    box-shadow: 0px 2px 0px rgba(0, 0, 0,0.1);
+    box-shadow: $no-data-row-box-shadow;
     // margin-top: 16px; 
     margin-bottom: 16px;
     border-bottom-left-radius: 8px ;
     border-bottom-right-radius: 8px ;
   }
+
+  
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  overflow: auto;
+}
+
+::-webkit-scrollbar-thumb {
+  background:  $color-white-2;    
+  border-radius: 30px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  border: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 30px;
+}
+::-webkit-scrollbar-track:hover{
+  background: $scroll-bar-color;
+}
+
+
+/* table.component.scss */
+
+.status-chip {
+  width: 96px;
+  padding: 0 8px 0 5px;
+  height: 30px;
+  border-radius: 15px;
+  box-shadow:$status-chip-box-shadow;
+}
+
+.ongoing-status{
+  background-color: $ongoing-chip-color !important;
+  font-weight: 300;
+  font-size: 14px;
+  font-family: $default-font;
+  mat-icon{
+    color: $ongoing-chip-color-icon;
+    span{
+      font-size:19px !important;
+    }
+  }
+}
+
+.completed-status {
+  background-color: $completed-chip-color  !important; 
+  font-weight: 300;
+  font-size: 14px;
+  font-family: $default-font;
+  mat-icon{
+    color: $completed-chip-color-icon;
+    span{
+      font-size:19px !important;
+    }
+  }
+}
+
+.failed-status {
+  background-color: $failed-chip-color !important;
+  font-weight: 300;
+  font-size: 14px;
+  font-family: $default-font;
+  mat-icon{
+    color: $failed-chip-color-icon ;
+    span{
+      font-size:19px !important;
+    }
+  }
+}
+
+.yet-to-start-status {
+  background-color: $yet-to-start-chip-color !important;
+  font-weight: 300;
+  font-size: 14px;
+  font-family: $default-font;
+  mat-icon{
+    color: $primary-color;
+    span{
+      font-size:19px !important;
+    }
+  }
+}
+
+.cancelled-status {
+  background-color: $cancelled-chip-color !important; 
+  font-weight: 300;
+  font-size: 14px;
+  font-family: $default-font;
+  mat-icon{
+    color: $cancelled-chip-color-icon;
+    span{
+      font-size:19px !important;
+    }
+  }
+}
+
+.chip-container{
+  display: flex;
+  align-items: center;
+  padding-top: 3px;
+}
+
+mat-icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

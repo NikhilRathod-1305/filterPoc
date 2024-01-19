@@ -1,4 +1,5 @@
 @import './../../../../assets/styles/styles.scss';
+@import './../../../../assets/styles/variables.scss';
 
 .header-container{
     text-align: center;
@@ -20,6 +21,6 @@
     justify-content: center;
     margin: 5px;
     font-weight: 600;
-    color: white;
+    color: $color-white;
     font-size: 40px;
 }

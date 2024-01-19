@@ -1,8 +1,9 @@
 <div class="app-container">
-  <app-header></app-header>
-  <app-filter (filtersApplied)="updateFilteredTableData($event)"></app-filter>
+  <app-header class="app-header"></app-header>
+  <app-filter (filtersApplied)="updateFilteredTableData($event)" (filterExpanded)="filtersExpanded($event)"
+  class="app-filter"></app-filter>
   <div class="table-container">
-        <app-table [data]="filteredTableData"></app-table>
-v>
-  <app-footer></app-footer>
+    <app-table [data]="filteredTableData" [filterExpanded]="filterExpanded" class="app-table"></app-table>
+  </div>
+  <app-footer class="app-footer"></app-footer>
 </div>

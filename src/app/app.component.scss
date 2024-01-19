@@ -1,15 +1,20 @@
+@import './../assets/styles/variables.scss';
+
 .app-container{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     align-items: center;
-    overflow-x: hidden;
 }
-app-header{
+.app-header{
+    position: sticky;
+    top: 0;
     width: 100%;
+    z-index: 5;
 }
-app-filter{
+.app-filter{
     width: 95%;
+    margin-bottom: 10px
 }
 .table-container{
     margin-top: 1px;
@@ -19,16 +24,15 @@ app-filter{
     width: 95%;
     align-self: center;
     border-radius: 8px;
-    // box-shadow: none;
-    // margin-bottom: none;
-    // min-height: 600px;
+    max-height: 100%;
 }
 
-app-footer {
+
+.app-footer {
     flex-shrink: 0;
     position: sticky;
     bottom: 0;
-    background-color: white; 
+    background-color: $white-background; 
     padding: 15px;
     display: flex;
     min-width: 100%;

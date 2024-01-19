@@ -3,7 +3,7 @@ import { MatPaginatorIntl } from "@angular/material/paginator";
 import { Subject } from "rxjs";
 
 @Injectable()
-export class MyCustomPaginatorIntl {
+export class CustomPaginatorIntl {
   changes = new Subject<void>();
 
   firstPageLabel= 'First Page';

@@ -49,7 +49,12 @@
 </mat-chip-listbox>
 </div>
 
-<div class="download-button">
+<div class="second-row-buttons">
+  <div class="view-all-button">
+    <h1 (click)="viewAll()" class="refresh-button" >
+      View All
+    </h1>
+  </div>
   <div>
     <button mat-icon-button (click)="refreshFilters()" class="refresh-button">
       <mat-icon>refresh</mat-icon>
@@ -121,7 +126,7 @@
     </mat-label>
   <mat-form-field id="filter-form" appearance="outline" class="date-filter">
     <mat-select #dateSelect [(ngModel)]="selectedDateFilter" (ngModelChange)="applyFilters()"
-    placeholder="Select Initiated Date">
+    placeholder="Select Date Range">
     <mat-select-trigger #dateSelectTrigger>
       {{ getDateFilterLabel(selectedDateFilter) }}
     </mat-select-trigger>

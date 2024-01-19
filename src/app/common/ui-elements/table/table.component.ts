@@ -1,19 +1,20 @@
 import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { MyCustomPaginatorIntl } from '../../helpers/my-custom-paginator-intl/my-custom-paginator-intl.component';
+import { CustomPaginatorIntl } from '../../helpers/custom-paginator-intl/custom-paginator-intl.component';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  providers: [{ provide: MatPaginatorIntl, useClass: MyCustomPaginatorIntl }]
+  providers: [{ provide: MatPaginatorIntl, useClass: CustomPaginatorIntl }]
 })
 
 export class TableComponent implements OnChanges {
   @ViewChild(MatSort) sort!: MatSort;
   @Input() data: any[] = [];
+  @Input() filterExpanded :any;
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
@@ -23,7 +24,7 @@ export class TableComponent implements OnChanges {
 
 
   ngOnChanges(): void {
-    this.initializeDataSource();
+    this.initializeDataSource();    
   }
 
   ngAfterViewInit(): void {
@@ -51,6 +52,4 @@ export class TableComponent implements OnChanges {
   }
 
   formattedColumns: string[] = this.displayedColumns.map(column => this.formatColumnName(column));
-
-  
 }
