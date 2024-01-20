@@ -8,6 +8,11 @@ import * as moment from 'moment';
 import { MatSelect, MatSelectTrigger } from '@angular/material/select';
 import { MatChip } from '@angular/material/chips';
 
+interface Chip {
+  label: string;
+  removable?: boolean;
+  icon?: string;
+}
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -203,14 +208,14 @@ if (this.searchKey && this.searchKey.trim() !== '') {
     });
   }
 
-  statusOptions: { status: string, count: number }[] = [
-    { status: 'Ongoing', count: 0 },
-    { status: 'Yet to Start', count: 0 },
-    { status: 'Completed', count: 0 },
-    { status: 'Failed', count: 0 },
-    { status: 'Cancelled', count: 0 }
+  // statusOptions: { status: string, count: number }[] = [
+  //   { status: 'Ongoing', count: 0 },
+  //   { status: 'Yet to Start', count: 0 },
+  //   { status: 'Completed', count: 0 },
+  //   { status: 'Failed', count: 0 },
+  //   { status: 'Cancelled', count: 0 }
 
-  ];
+  // ];
 
   searchConfigData = {
     isSearchIcon: true,
@@ -300,6 +305,79 @@ if (this.searchKey && this.searchKey.trim() !== '') {
 
   private getHeaders(): string[] {
     return ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'initiatedDate', 'tag'];
+  }
+
+  statusOptions: {
+    status: string;
+    icon: string;
+    count: number;
+    styles: {
+      backgroundColor: string;
+      textColor: string;
+      iconColor: string;
+    };
+  }[] = [
+    {
+      status: 'Ongoing',
+      icon: 'pace',
+      count: 0,
+      styles: {
+        backgroundColor: '#64B5F6',
+        textColor: '#FFFFFF',
+        iconColor: '#1976D2',
+      },
+    },
+    {
+      status: 'Yet to Start',
+      icon: 'clock_loader_60',
+      count: 0,
+      styles: {
+        backgroundColor: '#FFD54F',
+        textColor: '#000000',
+        iconColor: '#FFA000',
+      },
+    },
+    {
+      status: 'Completed',
+      icon: 'check_circle',
+      count: 0,
+      styles: {
+        backgroundColor: '#66BB6A',
+        textColor: '#FFFFFF',
+        iconColor: '#388E3C',
+      },
+    },
+    {
+      status: 'Failed',
+      icon: 'Cancel',
+      count: 0,
+      styles: {
+        backgroundColor: '#EF5350',
+        textColor: '#FFFFFF',
+        iconColor: '#D32F2F',
+      },
+    },
+    {
+      status: 'Cancelled',
+      icon: 'undo',
+      count: 0,
+      styles: {
+        backgroundColor: '#B0BEC5',
+        textColor: '#000000',
+        iconColor: '#78909C',
+      },
+    },
+  ];
+  
+
+  handleStatusChipClick(selectedStatus: string): void {
+    // Update the selectedStatus array based on the clicked chip
+    this.selectedStatus = [];
+
+    this.selectedStatus.push(selectedStatus);
+  
+    // Apply filters with the updated selectedStatus
+    this.applyFilters();
   }
 
   downloadCSV(): void {

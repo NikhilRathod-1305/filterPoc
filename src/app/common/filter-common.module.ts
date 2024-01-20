@@ -26,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
+import { CommonChipsComponent } from './components/common-chips/common-chips.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatCardModule } from '@angular/material/card';
     FilterComponent,
     HeaderComponent,
     FooterComponent,
-    SearchFilterComponent
+    SearchFilterComponent,
+    CommonChipsComponent
   ],
   imports: [
     CommonModule,

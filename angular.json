@@ -92,7 +92,7 @@
               "ngswConfigPath": "ngsw-config.json"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

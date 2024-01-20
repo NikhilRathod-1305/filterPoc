@@ -116,7 +116,7 @@ min-height: 40px;
 
 .mdc-evolution-chip__text-label.mat-mdc-chip-action-label{
   display: flex !important;
-  // text-align: center;
+  justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
   width: 100%;

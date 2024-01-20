@@ -12,42 +12,21 @@
   <h1>Showing results from {{ startDate | date : "dd MMM yyyy" }} to {{ currentDate | date : "dd MMM yyyy" }} </h1>
 </div>
 <div class="filter-second-row">
-  <div class="chip-list">
-<mat-chip-listbox>
-  <mat-chip id="status-chip" class="status-chip" *ngFor="let statusOption of statusOptions"
-                (click)="toggleStatus(statusOption.status)"
-                [ngClass]="{
-                  'yet-to-start-chip': isSelectedStatus(statusOption.status) && statusOption.status === 'Yet to Start',
-                  'ongoing-chip': isSelectedStatus(statusOption.status) && statusOption.status === 'Ongoing',
-                  'completed-chip': isSelectedStatus(statusOption.status) && statusOption.status === 'Completed',
-                  'failed':isSelectedStatus(statusOption.status) && statusOption.status === 'Failed',
-                  'cancelled':isSelectedStatus(statusOption.status) && statusOption.status === 'Cancelled',
-                }"
-                [matTooltip]="statusOption.status" 
-                [matTooltipPosition]="'above'"
-                matTooltipClass="custom-tooltip"
-                >
-          <mat-icon *ngIf="statusOption.status === 'Completed'">
-          <span class="material-symbols-outlined">check_circle</span>
-          </mat-icon>
-          <mat-icon *ngIf="statusOption.status === 'Yet to Start'">
-            <span class="material-symbols-outlined">clock_loader_60</span>
-          </mat-icon>
-          <mat-icon *ngIf="statusOption.status === 'Ongoing'">
-          <span class="material-symbols-outlined">pace</span>
-        </mat-icon>
-        <mat-icon *ngIf="statusOption.status === 'Failed'">
-          <span class="material-symbols-outlined">Cancel</span>
-          </mat-icon>
-          <mat-icon *ngIf="statusOption.status === 'Cancelled'">
-            <span class="material-symbols-outlined">undo</span>
-            </mat-icon>
-         <div class="count">
-          {{ statusOption.count }}
-        </div>
-      </mat-chip>
-</mat-chip-listbox>
+ <!-- filter.component.html -->
+<div class="chip-list">
+  <mat-chip-listbox>
+    <app-common-chips
+      *ngFor="let statusOption of statusOptions"
+      [status]="statusOption.status"
+      [icon]="statusOption.icon"
+      [count]="statusOption.count"
+      [isSelected]="isSelectedStatus(statusOption.status)"
+      [styles]="statusOption.styles"
+      (chipClicked)="toggleStatus(statusOption.status)"
+    ></app-common-chips>
+  </mat-chip-listbox>
 </div>
+
 
 <div class="second-row-buttons">
   <div class="view-all-button">
