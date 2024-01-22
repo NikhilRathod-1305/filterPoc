@@ -12,6 +12,7 @@ interface FilterType {
   key: string;
   label: string;
 }
+
 interface Chip {
   label: string;
   removable?: boolean;
@@ -46,13 +47,6 @@ export class FilterComponent implements OnInit, OnChanges {
   isFilterCardVisible: boolean = false;
   searchKey!: string;
   @Output() filterExpanded: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  filterTypes: FilterType[] = [
-    { key: 'projects', label: 'Projects' },
-    { key: 'types', label: 'Types' },
-    { key: 'tags', label: 'Tags' },
-    // Add more filter types as needed
-  ];
 
   constructor(private service: CommonService, private cdr: ChangeDetectorRef) {
     this.handleDateFilter = this.handleDateFilter.bind(this);
@@ -219,14 +213,29 @@ if (this.searchKey && this.searchKey.trim() !== '') {
     });
   }
 
-  // statusOptions: { status: string, count: number }[] = [
-  //   { status: 'Ongoing', count: 0 },
-  //   { status: 'Yet to Start', count: 0 },
-  //   { status: 'Completed', count: 0 },
-  //   { status: 'Failed', count: 0 },
-  //   { status: 'Cancelled', count: 0 }
+  
+  filterTypes: FilterType[] = [
+    { key: 'projects', label: 'Projects' },
+    { key: 'types', label: 'Types' },
+    { key: 'tags', label: 'Tags' },
+    // Add more filter types as needed
+  ];
 
-  // ];
+  // ... (existing methods)
+
+  getSelectedFiltersChips(filterType: string): string[] {
+    switch (filterType) {
+      case 'projects':
+        return this.selectedProjects;
+      case 'types':
+        return this.selectedTypes;
+      case 'tags':
+        return [this.selectedTags];
+      // Add more cases for other filter types
+      default:
+        return [];
+    }
+  }
 
   searchConfigData = {
     isSearchIcon: true,

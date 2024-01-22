@@ -31,7 +31,7 @@
           <th mat-header-cell *matHeaderCellDef class="table-header">
             {{ 'Status' | titlecase }}
           </th>
-          <td mat-cell *matCellDef="let element" class="table-data">
+          <td mat-cell *matCellDef="let element" class="table-data" [matTooltip]="element[column]">
             <div *ngIf="element.status === 'Ongoing'; else completedStatus" class="status-chip ongoing-status">
               <div class="chip-container"> 
                 <mat-icon>
