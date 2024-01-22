@@ -1,7 +1,7 @@
 @import './../../../../assets/styles/variables.scss';
 @import './../../../../assets/styles/styles.scss';
 
-mat-chip{
+.chip-container{
     width: 68px;
     height: 30px;
     border-radius: 15px;
@@ -14,8 +14,9 @@ mat-chip{
     span{
     font-size: 19px !important;
     }
-
-    .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label{
-        display: flex !important;
-        justify-content: space-evenly;
-      }
+.chip-content{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}

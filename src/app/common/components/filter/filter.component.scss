@@ -188,15 +188,21 @@ mat-card{
   }
 }
 
+.selected-chip{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
 .selected-filters{
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
   margin-left: 9px;
-  mat-chip{
-    margin:5px 5px 0px 5px;
-  }
+  text-wrap: nowrap;
 }
 .project-chip{
   background-color:$project-chip-background-color !important;

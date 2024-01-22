@@ -12,8 +12,8 @@
   <h1>Showing results from {{ startDate | date : "dd MMM yyyy" }} to {{ currentDate | date : "dd MMM yyyy" }} </h1>
 </div>
 <div class="filter-second-row">
- <!-- filter.component.html -->
-<div class="chip-list">
+<!-- preloaded status chip -->
+  <div class="chip-list">
   <mat-chip-listbox>
     <app-common-chips
       *ngFor="let statusOption of statusOptions"
@@ -127,7 +127,51 @@
 </div>
 </div>
 </mat-card>
-<div class="selected-filters">
+
+
+<div  *ngIf="selectedProjects.length>0" class="selected-filters">
+  <div>
+    <p>Selected Projects: </p>
+  </div>
+  <div class="selected-chip">
+  <app-selected-filter-chip
+  *ngFor="let project of selectedProjects" 
+    [label]="project"
+    [removable]="true"
+    [backgroundColor]="getFilterColor('project')"
+    (removeFilter)="removeFilter('project', project)"
+  ></app-selected-filter-chip>
+  </div>
+</div>
+<div *ngIf="selectedTypes.length>0" class="selected-filters">
+  <div>
+    <p >Selected Category: </p>
+  </div>
+  <div class="selected-chip">
+  <app-selected-filter-chip
+  *ngFor="let type of selectedTypes"
+    [label]="type"
+    [backgroundColor]="getFilterColor('type')"
+    [removable]="true"
+    (removeFilter)="removeFilter('type', type)"
+  ></app-selected-filter-chip>
+  </div>
+</div>
+<div *ngIf="selectedTags.length>0" class="selected-filters">
+  <div>
+    <p >Selected Tags: </p>
+  </div>
+  <div class="selected-chip">
+  <app-selected-filter-chip
+  *ngIf="selectedTags" 
+    [label]="selectedTags"
+    [backgroundColor]="getFilterColor('tag')"
+    [removable]="true"
+    (removeFilter)="removeFilter('tag', selectedTags)"
+  ></app-selected-filter-chip>
+  </div>
+</div>
+<!-- <div class="selected-filters">
   <div>
     <p *ngIf="selectedProjects.length>0">Selected Projects: </p>
   </div>
@@ -159,4 +203,4 @@
     <mat-icon matChipRemove>cancel</mat-icon>
   </mat-chip>
 </div>
-  </div>
+  </div> -->

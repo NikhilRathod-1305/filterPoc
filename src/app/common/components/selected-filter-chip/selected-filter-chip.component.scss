@@ -1,0 +1,14 @@
+@import './../../../../assets/styles/variables.scss';
+@import './../../../../assets/styles/styles.scss';
+
+p {
+    color: $color-black;
+  }
+
+.filter-chip{
+  margin: 5px;
+    width: fit-content;
+    height: 30px;
+    border-radius: 15px;
+    box-shadow:$status-chip-box-shadow;
+  }

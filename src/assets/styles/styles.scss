@@ -169,3 +169,7 @@ mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color.ng-star-
 .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full, .mat-primary .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-full{
   background-color: $primary-color !important;
 }
+
+.mat-mdc-standard-chip .mdc-evolution-chip__action--primary{
+  width: 100%;
+}

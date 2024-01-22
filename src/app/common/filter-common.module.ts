@@ -27,6 +27,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { CommonChipsComponent } from './components/common-chips/common-chips.component';
+import { SelectedFilterChipComponent } from './components/selected-filter-chip/selected-filter-chip.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CommonChipsComponent } from './components/common-chips/common-chips.com
     HeaderComponent,
     FooterComponent,
     SearchFilterComponent,
-    CommonChipsComponent
+    CommonChipsComponent,
+    SelectedFilterChipComponent
   ],
   imports: [
     CommonModule,
@@ -67,6 +69,7 @@ import { CommonChipsComponent } from './components/common-chips/common-chips.com
     FilterComponent,
     HeaderComponent,
     FooterComponent,
-    SearchFilterComponent  ]
+    SearchFilterComponent,
+    SelectedFilterChipComponent  ]
 })
 export class FilterCommonModule { }

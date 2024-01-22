@@ -8,6 +8,10 @@ import * as moment from 'moment';
 import { MatSelect, MatSelectTrigger } from '@angular/material/select';
 import { MatChip } from '@angular/material/chips';
 
+interface FilterType {
+  key: string;
+  label: string;
+}
 interface Chip {
   label: string;
   removable?: boolean;
@@ -42,6 +46,13 @@ export class FilterComponent implements OnInit, OnChanges {
   isFilterCardVisible: boolean = false;
   searchKey!: string;
   @Output() filterExpanded: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  filterTypes: FilterType[] = [
+    { key: 'projects', label: 'Projects' },
+    { key: 'types', label: 'Types' },
+    { key: 'tags', label: 'Tags' },
+    // Add more filter types as needed
+  ];
 
   constructor(private service: CommonService, private cdr: ChangeDetectorRef) {
     this.handleDateFilter = this.handleDateFilter.bind(this);
@@ -251,6 +262,21 @@ if (this.searchKey && this.searchKey.trim() !== '') {
     return this.selectedProjects.length > 0 || this.selectedTypes.length > 0 || this.selectedStatus.length > 0 || this.selectedDateFilter.length > 0 || this.selectedTags.length > 0;
   }
 
+  
+
+  getSelectedFilters(filterType: string): string[] {
+    switch (filterType) {
+      case 'projects':
+        return this.selectedProjects;
+      case 'types':
+        return this.selectedTypes;
+      case 'tags':
+        return [this.selectedTags]; // Note: Assuming selectedTags is a string, wrap it in an array
+      // Add more cases for other filter types
+      default:
+        return [];
+    }
+  }
 
   removeFilter(filterType: string, value: string): void {
     switch (filterType) {
@@ -306,6 +332,21 @@ if (this.searchKey && this.searchKey.trim() !== '') {
   private getHeaders(): string[] {
     return ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'initiatedDate', 'tag'];
   }
+  
+  getFilterColor(filterType: string): string {
+    // Implement logic to return background color based on filter type
+    // For example:
+    switch (filterType) {
+      case 'project':
+        return '#eeb9b99e'; // Sample color for projects
+      case 'type':
+        return '#facb9593'; // Sample color for types
+        case 'tag' :
+          return '#bceda5c5';
+      default:
+        return '#CCCCCC'; // Default color
+    }
+  }
 
   statusOptions: {
     status: string;
@@ -322,9 +363,9 @@ if (this.searchKey && this.searchKey.trim() !== '') {
       icon: 'pace',
       count: 0,
       styles: {
-        backgroundColor: '#64B5F6',
+        backgroundColor: '#d9fff6',
         textColor: '#FFFFFF',
-        iconColor: '#1976D2',
+        iconColor: '#17C69C',
       },
     },
     {
@@ -332,9 +373,9 @@ if (this.searchKey && this.searchKey.trim() !== '') {
       icon: 'clock_loader_60',
       count: 0,
       styles: {
-        backgroundColor: '#FFD54F',
+        backgroundColor: '#cce7ff',
         textColor: '#000000',
-        iconColor: '#FFA000',
+        iconColor: '#225E9E',
       },
     },
     {
@@ -342,9 +383,9 @@ if (this.searchKey && this.searchKey.trim() !== '') {
       icon: 'check_circle',
       count: 0,
       styles: {
-        backgroundColor: '#66BB6A',
+        backgroundColor: '#fff7e0',
         textColor: '#FFFFFF',
-        iconColor: '#388E3C',
+        iconColor: '#ffbd31',
       },
     },
     {
@@ -352,9 +393,9 @@ if (this.searchKey && this.searchKey.trim() !== '') {
       icon: 'Cancel',
       count: 0,
       styles: {
-        backgroundColor: '#EF5350',
+        backgroundColor: '#ffb5b5',
         textColor: '#FFFFFF',
-        iconColor: '#D32F2F',
+        iconColor: '#ab0b0b',
       },
     },
     {
@@ -362,9 +403,9 @@ if (this.searchKey && this.searchKey.trim() !== '') {
       icon: 'undo',
       count: 0,
       styles: {
-        backgroundColor: '#B0BEC5',
+        backgroundColor: '#f0a5ff',
         textColor: '#000000',
-        iconColor: '#78909C',
+        iconColor: '#58235edc',
       },
     },
   ];

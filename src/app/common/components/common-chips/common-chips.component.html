@@ -1,13 +1,16 @@
 <!-- status-chip.component.html -->
 <mat-chip
+  class="chip-container"
   (click)="onChipClick()"
   [ngClass]="{ 'selected-chip': isSelected, 'non-selected-chip': !isSelected }"
   [style.background-color]="isSelected ? styles.backgroundColor : '#E0E0E0'"
-  [style.color]="isSelected ? styles.textColor : '#000000'"
+  [style.color]="isSelected ? styles.textColor : '#CCCCCC'"
   [matTooltip]="status"
   [matTooltipPosition]="'above'"
   matTooltipClass="custom-tooltip"
 >
+<div class="chip-content">
   <span class="material-symbols-outlined" [style.color]="isSelected ? styles.iconColor : '#000000'">{{ icon }}</span>
   <div class="count">{{ count }}</div>
+</div>
 </mat-chip>
