@@ -26,8 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
-import { CommonChipsComponent } from './components/common-chips/common-chips.component';
-import { SelectedFilterChipComponent } from './components/selected-filter-chip/selected-filter-chip.component';
+import { CommonChipsComponent } from './ui-elements/common-chips/common-chips.component';
+import { SelectedFilterChipComponent } from './ui-elements/selected-filter-chip/selected-filter-chip.component';
 
 
 @NgModule({

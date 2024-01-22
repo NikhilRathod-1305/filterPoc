@@ -15,9 +15,9 @@ export class CommonChipsComponent {
   @Input() icon: string = '';
   @Input() count: number = 0;
   @Input() isSelected: boolean = false;
-  @Input() backgroundColor: string = ''; // Add this
-  @Input() textColor: string = ''; // Add this
-  @Input() iconColor: string = ''; // Add this
+  @Input() backgroundColor: string = ''; 
+  @Input() textColor: string = ''; 
+  @Input() iconColor: string = ''; 
   @Output() chipClicked: EventEmitter<void> = new EventEmitter<void>();
   @Input() styles: { backgroundColor: string; textColor: string; iconColor: string } = {
     backgroundColor: '',
