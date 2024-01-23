@@ -5,7 +5,6 @@ import { FilterComponent } from './components/filter/filter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchFilterComponent } from './ui-elements/search-filter/search-filter.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -26,8 +24,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
-import { CommonChipsComponent } from './components/common-chips/common-chips.component';
-import { SelectedFilterChipComponent } from './components/selected-filter-chip/selected-filter-chip.component';
+import { CommonChipsComponent } from './ui-elements/common-chips/common-chips.component';
+import { SelectedFilterChipComponent } from './ui-elements/selected-filter-chip/selected-filter-chip.component';
 
 
 @NgModule({
