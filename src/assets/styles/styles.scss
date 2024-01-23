@@ -173,3 +173,16 @@ mat-icon.notranslate.material-icons.mat-ligature-font.mat-icon-no-color.ng-star-
 .mat-mdc-standard-chip .mdc-evolution-chip__action--primary{
   width: 100%;
 }
+
+
+.mat-sort-header-arrow{
+  color: $color-white;
+}
+
+.mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
+  opacity: 1 !important;
+}
+
+.mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition:hover {
+  transform: translate(25%);
+}

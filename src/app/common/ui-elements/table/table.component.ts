@@ -19,7 +19,7 @@ export class TableComponent implements OnChanges {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
   pageLength!: number;
-  displayedColumns: string[] = ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'tag', 'initiatedDate'];
+  displayedColumns: string[] = ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'tag', 'status', 'initiatedDate'];
   @ViewChild(MatTable) table!: MatTable<any>;
 
 
@@ -47,7 +47,6 @@ export class TableComponent implements OnChanges {
   }
 
   formatColumnName(columnName: string): string {
-    // Replace camelCase with words separated by spaces
     return columnName.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
   }
 
