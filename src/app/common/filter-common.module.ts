@@ -26,6 +26,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { CommonChipsComponent } from './ui-elements/common-chips/common-chips.component';
 import { SelectedFilterChipComponent } from './ui-elements/selected-filter-chip/selected-filter-chip.component';
+import { PrependZeroPadPipe } from './helpers/pipes/prepend-zero-pad.pipe';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { SelectedFilterChipComponent } from './ui-elements/selected-filter-chip/
     FooterComponent,
     SearchFilterComponent,
     CommonChipsComponent,
-    SelectedFilterChipComponent
+    SelectedFilterChipComponent,
+    PrependZeroPadPipe
   ],
   imports: [
     CommonModule,
@@ -68,6 +70,7 @@ import { SelectedFilterChipComponent } from './ui-elements/selected-filter-chip/
     HeaderComponent,
     FooterComponent,
     SearchFilterComponent,
-    SelectedFilterChipComponent  ]
+    SelectedFilterChipComponent,
+    PrependZeroPadPipe  ]
 })
 export class FilterCommonModule { }

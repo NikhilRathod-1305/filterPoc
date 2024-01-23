@@ -2,22 +2,11 @@ import { ChangeDetectorRef, Component, EventEmitter, OnChanges, OnInit, Output, 
 import { CommonService } from '../../services/common.service';
 import { AngularCsv } from 'angular-csv-ext/dist/Angular-csv';
 import * as XLSX from 'xlsx';
-import { MatDateRangePicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDateRangePicker } from '@angular/material/datepicker';
 import { FormControl, FormGroup } from '@angular/forms';
-import * as moment from 'moment';
-import { MatSelect, MatSelectTrigger } from '@angular/material/select';
-import { MatChip } from '@angular/material/chips';
+import { MatSelect } from '@angular/material/select';
+import { statusOptions } from '../../helpers/constants/constants';
 
-interface FilterType {
-  key: string;
-  label: string;
-}
-
-interface Chip {
-  label: string;
-  removable?: boolean;
-  icon?: string;
-}
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -47,6 +36,7 @@ export class FilterComponent implements OnInit, OnChanges {
   isFilterCardVisible: boolean = false;
   searchKey!: string;
   @Output() filterExpanded: EventEmitter<boolean> = new EventEmitter<boolean>();
+  statusOptions = statusOptions;
 
   constructor(private service: CommonService, private cdr: ChangeDetectorRef) {
     this.handleDateFilter = this.handleDateFilter.bind(this);
@@ -139,7 +129,6 @@ export class FilterComponent implements OnInit, OnChanges {
       });
     }
     else {
-      // If no filters are selected, display all data
       this.filteredData = [...this.data]
     }
 
@@ -189,7 +178,6 @@ if (this.searchKey && this.searchKey.trim() !== '') {
       }
     }
     
-    // this.updateStatusOptionsCount();
     this.filtersApplied.emit(this.filteredData);
   }
 
@@ -212,37 +200,6 @@ if (this.searchKey && this.searchKey.trim() !== '') {
       option.count = this.data.filter(item => item.status === option.status).length;
     });
   }
-
-  
-  filterTypes: FilterType[] = [
-    { key: 'projects', label: 'Projects' },
-    { key: 'types', label: 'Types' },
-    { key: 'tags', label: 'Tags' },
-    // Add more filter types as needed
-  ];
-
-  // ... (existing methods)
-
-  getSelectedFiltersChips(filterType: string): string[] {
-    switch (filterType) {
-      case 'projects':
-        return this.selectedProjects;
-      case 'types':
-        return this.selectedTypes;
-      case 'tags':
-        return [this.selectedTags];
-      // Add more cases for other filter types
-      default:
-        return [];
-    }
-  }
-
-  searchConfigData = {
-    isSearchIcon: true,
-    placeholder: "Search",
-    isSearchClearIcon: true,
-    maxLengthValue: 25,
-  };
 
   onSearchChanged(searchTerm: string): void {
     this.searchKey = searchTerm;
@@ -269,22 +226,6 @@ if (this.searchKey && this.searchKey.trim() !== '') {
 
   areFiltersSelected(): boolean {
     return this.selectedProjects.length > 0 || this.selectedTypes.length > 0 || this.selectedStatus.length > 0 || this.selectedDateFilter.length > 0 || this.selectedTags.length > 0;
-  }
-
-  
-
-  getSelectedFilters(filterType: string): string[] {
-    switch (filterType) {
-      case 'projects':
-        return this.selectedProjects;
-      case 'types':
-        return this.selectedTypes;
-      case 'tags':
-        return [this.selectedTags]; // Note: Assuming selectedTags is a string, wrap it in an array
-      // Add more cases for other filter types
-      default:
-        return [];
-    }
   }
 
   removeFilter(filterType: string, value: string): void {
@@ -343,102 +284,28 @@ if (this.searchKey && this.searchKey.trim() !== '') {
   }
   
   getFilterColor(filterType: string): string {
-    // Implement logic to return background color based on filter type
-    // For example:
     switch (filterType) {
       case 'project':
-        return '#eeb9b99e'; // Sample color for projects
+        return '#eeb9b99e';
       case 'type':
-        return '#facb9593'; // Sample color for types
+        return '#facb9593';
         case 'tag' :
           return '#bceda5c5';
       default:
-        return '#CCCCCC'; // Default color
+        return '#CCCCCC';
     }
   }
 
-  statusOptions: {
-    status: string;
-    icon: string;
-    count: number;
-    styles: {
-      backgroundColor: string;
-      textColor: string;
-      iconColor: string;
-    };
-  }[] = [
-    {
-      status: 'Ongoing',
-      icon: 'pace',
-      count: 0,
-      styles: {
-        backgroundColor: '#d9fff6',
-        textColor: '#FFFFFF',
-        iconColor: '#17C69C',
-      },
-    },
-    {
-      status: 'Yet to Start',
-      icon: 'clock_loader_60',
-      count: 0,
-      styles: {
-        backgroundColor: '#cce7ff',
-        textColor: '#000000',
-        iconColor: '#225E9E',
-      },
-    },
-    {
-      status: 'Completed',
-      icon: 'check_circle',
-      count: 0,
-      styles: {
-        backgroundColor: '#fff7e0',
-        textColor: '#FFFFFF',
-        iconColor: '#ffbd31',
-      },
-    },
-    {
-      status: 'Failed',
-      icon: 'Cancel',
-      count: 0,
-      styles: {
-        backgroundColor: '#ffb5b5',
-        textColor: '#FFFFFF',
-        iconColor: '#ab0b0b',
-      },
-    },
-    {
-      status: 'Cancelled',
-      icon: 'undo',
-      count: 0,
-      styles: {
-        backgroundColor: '#f0a5ff',
-        textColor: '#000000',
-        iconColor: '#58235edc',
-      },
-    },
-  ];
-  
 
   handleStatusChipClick(selectedStatus: string): void {
-    // Update the selectedStatus array based on the clicked chip
     this.selectedStatus = [];
-
     this.selectedStatus.push(selectedStatus);
-  
-    // Apply filters with the updated selectedStatus
-    this.applyFilters();
+      this.applyFilters();
   }
 
   downloadCSV(): void {
     const headers = this.getHeaders();
-    // if (this.filteredData.length === 0) {
-    //   new AngularCsv([headers, ...this.data], 'filtered_data');
-    // }
-    // else {
       new AngularCsv([headers, ...this.filteredData], 'filtered_data');
-
-    // }
   }
 
   downloadExcel(): void {
@@ -449,18 +316,15 @@ if (this.searchKey && this.searchKey.trim() !== '') {
     if (this.filteredData.length > 0) {
       formattedData = this.filteredData.map(item => {
         const formattedItem = { ...item };
-  
-        // Check if projects is an array before calling join
-        if (Array.isArray(item.projects)) {
+          if (Array.isArray(item.projects)) {
           formattedItem.projects = item.projects.join(', ');
         } else {
-          formattedItem.projects = item.projects.toString(); // Convert to string if not an array
+          formattedItem.projects = item.projects.toString();
         }
   
         return formattedItem;
       });
     } else {
-      // If there is no data after filtering, create an empty row with headers
       formattedData.push(headers.reduce((obj, header) => ({ ...obj, [header]: '' }), {}));
     }
   
@@ -468,6 +332,5 @@ if (this.searchKey && this.searchKey.trim() !== '') {
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, 'filtered_projects.xlsx');
-// }
   }
 }
