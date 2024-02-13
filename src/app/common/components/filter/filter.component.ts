@@ -279,6 +279,28 @@ if (this.searchKey && this.searchKey.trim() !== '') {
     this.applyFilters();
   }
 
+  showAllFilters: boolean = false;
+maxVisibleChips: number = 6; // Change this value as needed
+
+// Function to toggle the state between showing all chips and showing just a limited number of chips
+toggleShowAllFilters() {
+  this.showAllFilters = !this.showAllFilters;
+}
+
+// Function to determine if the "show more" button should be displayed
+shouldDisplayShowMoreButton(): boolean {
+  return this.selectedProjects.length > this.maxVisibleChips;
+}
+
+// Function to get the chips to display based on the current state
+getDisplayedChips(): string[] {
+  if (this.showAllFilters) {
+    return this.selectedProjects;
+  } else {
+    return this.selectedProjects.slice(0, this.maxVisibleChips);
+  }
+}
+
   private getHeaders(): string[] {
     return ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'status', 'initiatedDate', 'tag'];
   }

@@ -21,8 +21,7 @@ export class TableComponent implements OnChanges {
   pageLength!: number;
   displayedColumns: string[] = ['id', 'name', 'phoneNumber', 'email', 'projects', 'type', 'tag', 'status', 'initiatedDate'];
   @ViewChild(MatTable) table!: MatTable<any>;
-
-
+  displayToolTip:boolean=false;
   ngOnChanges(): void {
     this.initializeDataSource();    
   }
@@ -51,4 +50,5 @@ export class TableComponent implements OnChanges {
   }
 
   formattedColumns: string[] = this.displayedColumns.map(column => this.formatColumnName(column));
+
 }

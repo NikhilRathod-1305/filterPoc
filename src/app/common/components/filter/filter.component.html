@@ -135,12 +135,17 @@
   </div>
   <div class="selected-chip">
   <app-selected-filter-chip
-  *ngFor="let project of selectedProjects" 
-    [label]="project"
+  *ngFor="let project of getDisplayedChips()" 
+  [label]="project"
     [removable]="true"
     [backgroundColor]="getFilterColor('project')"
     (removeFilter)="removeFilter('project', project)"
   ></app-selected-filter-chip>
+  <div *ngIf="shouldDisplayShowMoreButton()" (click)="toggleShowAllFilters()">
+    <p class="show-more-less">
+      ...{{ showAllFilters ? 'Show Less' : 'Show More' }}
+    </p>
+  </div>
   </div>
 </div>
 <div *ngIf="selectedTypes.length>0" class="selected-filters">

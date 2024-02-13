@@ -196,10 +196,16 @@ mat-card{
   margin: 5px;
 }
 
+.show-more-less{
+  color: $primary-color;
+  cursor: pointer;
+  font-size: 14px;
+  // margin-left: 8px;
+}
+
 .selected-filters{
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   width: 100%;
   margin-left: 9px;
   text-wrap: nowrap;
